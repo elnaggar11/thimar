@@ -1,6 +1,6 @@
-import 'package:doctorin/core/utils/utils.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_widget_from_html/flutter_widget_from_html.dart';
+import 'package:thimar/core/utils/utils.dart';
 
 class CustomHtmlItem extends StatelessWidget {
   final String data;

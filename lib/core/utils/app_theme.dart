@@ -1,8 +1,7 @@
-import 'package:doctorin/gen/fonts.gen.dart';
-import 'package:doctorin/gen/locale_keys.g.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:thimar/gen/locale_keys.g.dart';
 
 // import '../../gen/fonts.gen.dart';
 import 'extensions.dart';
@@ -105,7 +104,7 @@ class AppThemes {
       indicatorColor: mainColor.color,
       labelStyle: TextStyle(
         fontSize: 15,
-        fontFamily: FontFamily.urbanist,
+        fontFamily: 'tajawal',
         //  fontFamily: FontFamily.iBMPlexSansArabic,
         color: mainColor.color,
         fontWeight: FontWeight.w700,
@@ -197,31 +196,31 @@ class AppThemes {
     labelLarge: TextStyle(
       color: blackColor,
       fontSize: 14,
-      fontFamily: FontFamily.urbanist,
+      fontFamily: 'tajawal',
       fontWeight: FontWeight.w700,
     ),
     headlineMedium: TextStyle(
       color: blackColor,
       fontSize: 14,
-      fontFamily: FontFamily.urbanist,
+      fontFamily: 'tajawal',
       fontWeight: FontWeight.w600,
     ),
     labelMedium: TextStyle(
       color: blackColor,
       fontSize: 14,
-      fontFamily: FontFamily.urbanist,
+      fontFamily: 'tajawal',
       fontWeight: FontWeight.w500,
     ),
     headlineSmall: TextStyle(
       color: blackColor,
       fontSize: 14,
-      fontFamily: FontFamily.urbanist,
+      fontFamily: 'tajawal',
       fontWeight: FontWeight.w400,
     ),
     labelSmall: TextStyle(
       color: blackColor,
       fontSize: 14,
-      fontFamily: FontFamily.urbanist,
+      fontFamily: 'tajawal',
       fontWeight: FontWeight.w300,
     ),
   );

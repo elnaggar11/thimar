@@ -2,7 +2,6 @@ import 'dart:async';
 import 'dart:io';
 
 import 'package:cached_network_image/cached_network_image.dart';
-import 'package:doctorin/gen/assets.gen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:lottie/lottie.dart';
@@ -236,7 +235,8 @@ class _CashNetworkImageState extends State<CashNetworkImage> {
     child: BaseShimmer(
       child: Center(
         child: CustomImage(
-          Assets.svg.appLogo,
+          // TODO : put the real image
+          "Assets.svg.appLogo",
           height: widget.height == null || widget.height! / 7 < 20
               ? 20
               : widget.height! / 7,

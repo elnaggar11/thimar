@@ -1,9 +1,8 @@
-import 'package:doctorin/gen/assets.gen.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:shimmer/shimmer.dart';
+import 'package:thimar/constants/assets.dart';
 
 import '../../gen/locale_keys.g.dart';
 import '../utils/extensions.dart';
@@ -70,7 +69,9 @@ class LoadingImage extends StatelessWidget {
       width: size ?? 70.h,
       height: size ?? 70.h,
       child: CustomImage(
-        Assets.svg.appLogo,
+        // TODO : put image name
+        "Assets.svg.appLogo",
+
         color: context.primaryColor,
       ).center.withPadding(horizontal: 10.w),
     ),
@@ -105,7 +106,7 @@ class PaginationLoading extends StatelessWidget {
           spacing: 12.w,
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            SpinKitThreeBounce(color: context.primaryColor, size: 18.h),
+            // SpinKitThreeBounce(color: context.primaryColor, size: 18.h),
             Shimmer.fromColors(
               baseColor: context.hintColor.withValues(alpha: 0.4),
               highlightColor: context.primaryColorLight,

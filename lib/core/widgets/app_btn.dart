@@ -1,6 +1,6 @@
-import 'package:doctorin/core/widgets/loading.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:thimar/core/widgets/loading.dart';
 
 import '../utils/extensions.dart';
 

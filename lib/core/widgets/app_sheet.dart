@@ -1,6 +1,6 @@
-import 'package:doctorin/core/routes/app_routes_fun.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:thimar/core/routes/app_routes_fun.dart';
 
 import '../utils/extensions.dart';
 

@@ -4,14 +4,12 @@ import 'dart:developer';
 import 'dart:io';
 
 import 'package:dio/dio.dart';
-import 'package:doctorin/core/routes/app_routes_fun.dart';
-import 'package:doctorin/core/routes/routes.dart';
-import 'package:doctorin/core/widgets/flash_helper.dart';
-import 'package:doctorin/gen/locale_keys.g.dart';
+
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/foundation.dart';
+import 'package:thimar/core/widgets/flash_helper.dart';
+import 'package:thimar/gen/locale_keys.g.dart';
 
-import '../../data/models/user_model.dart';
 import '../utils/enums.dart';
 import '../utils/logger.dart';
 
@@ -19,10 +17,10 @@ class ServerGate {
   String? _baseUrl = 'https://doctor-in.sharqawi.aait-d.com/api';
 
   Map<String, dynamic> get constHeader => {
-    if (UserModel.i.token.isNotEmpty)
-      "Authorization": "Bearer ${UserModel.i.token}",
-    "Accept": "application/json",
-    "Accept-Language": LocaleKeys.lang.tr(),
+    // if (UserModel.i.token.isNotEmpty)
+    //   "Authorization": "Bearer ${UserModel.i.token}",
+    // "Accept": "application/json",
+    // "Accept-Language": LocaleKeys.lang.tr(),
   };
 
   final _dio = Dio();
@@ -59,7 +57,6 @@ class ServerGate {
           headers: {
             if (headers != null) ...headers,
             if (!removeConstHeaders) ...constHeader,
-
 
             if (headers == null && url.contains('provider')) ...{
               'User-Type': 'provider',
@@ -164,7 +161,6 @@ class ServerGate {
             if (headers == null && url.contains('provider')) ...{
               'User-Type': 'provider',
             },
-
           },
           responseType: ResponseType.json,
         ),
@@ -327,7 +323,7 @@ class ServerGate {
       final String? potentialId = resp.data['data']?['id']?.toString();
       fileId = potentialId ?? '';
       if (isSave) {
-        UserModel.i.avatar = resp.data['data']?['path'] ?? '';
+        // UserModel.i.avatar = resp.data['data']?['path'] ?? '';
       }
       // print('-==-=- here ${resp.data['data']}');
       return fileId;
@@ -359,10 +355,10 @@ class ServerGate {
               : LocaleKeys.something_went_wrong_please_try_again.tr(),
         );
       } else if (err.response?.statusCode == 401) {
-        if (UserModel.i.isAuth) {
-          UserModel.i.clear();
-          pushAndRemoveUntil(NamedRoutes.login);
-        }
+        // if (UserModel.i.isAuth) {
+        //   UserModel.i.clear();
+        //   pushAndRemoveUntil(NamedRoutes.login);
+        // }
 
         return CustomResponse(
           success: false,

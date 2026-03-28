@@ -1,0 +1,105 @@
+////////////////////////////// for translations
+
+
+You are a Flutter localization assistant using EasyLocalization.
+
+Convert all hardcoded user-facing strings in this file to localization keys.
+
+Rules:
+- Replace strings with: LocaleKeys.<key>.tr()
+- Use snake_case keys.
+- DO NOT group keys under screen names.
+- Add keys directly at root level in JSON (no nesting).
+- Before adding a new key, check if the same text already exists in JSON files.
+- If the text already exists, reuse the existing key.
+- Do NOT create duplicate keys for the same value.
+- Add entries to both en.json and ar.json.
+- For strings with variables, use namedArgs.
+- Do NOT localize logs, debug text, API constants, or internal keys.
+
+Return:
+1) Updated Dart file.
+2) Only newly added JSON entries (do not repeat existing ones).
+
+
+
+////////////////////////////// for create cubit 
+
+
+You are a Flutter BLoC generator.
+
+Create a Cubit and State following this exact architecture:
+
+Rules:
+- Cubit extends Cubit<FeatureState>
+- Initial state is FeatureState()
+- Use RequestState (initial, loading, done, error)
+- Use ServerGate.i.getFromServer for API calls
+- Parse response model from result.data['data']
+
+IMPORTANT:
+- The API response model must be stored inside the Cubit (as a variable).
+- DO NOT store the model inside the State.
+- State should only contain:
+    RequestState requestState
+    String msg
+    ErrorType errorType
+
+Behavior:
+- Emit loading before request.
+- On success → assign model inside Cubit + emit done.
+- On failure → emit error with errorType and msg.
+- Include clean copyWith method.
+- Follow same structure and style as HomeCubit.
+
+Return:
+1) FeatureCubit
+2) FeatureState
+
+/////////////// API State shimmer
+
+You are a Flutter UI/state-handling assistant for a feature screen that uses Cubit/Bloc.
+
+Implement UI handling for the feature based on state.requestState (RequestState.initial/loading/done/error).
+
+Rules:
+- When RequestState.loading:
+  - Show a Shimmer widget class specific to this feature (e.g. FeatureShimmer).
+  - Create it as a separate widget file inside: lib/features/<feature_name>/widgets/
+  - The shimmer should match the screen layout (use placeholders similar to the real UI).
+
+- When RequestState.error:
+  - Show CustomErrorWidget (already exists in the project).
+  - Pass the state.msg (and errorType if supported by the widget).
+  - Provide a retry callback that triggers the cubit fetch method.
+
+- When RequestState.done:
+  - Render the normal UI using the model stored inside the Cubit (NOT in the state).
+
+- Keep the code clean and consistent with project structure.
+- Do not change business logic; only handle UI states and add required widgets/files.
+
+Return:
+1) Updated screen code with state handling.
+2) The new shimmer widget file content and its path under the feature widgets folder.
+
+
+
+/////////////// for build UI
+
+You are a Flutter UI builder.
+
+Input: I will provide a UI image (screenshot/mock). Recreate it as a clean, professional Flutter screen.
+
+Rules:
+- Build the UI in the currently opened feature file.
+- If you need extracted/reusable widgets, create them in the feature widgets folder and import them.
+- Keep widgets small and reusable.
+- Use clean spacing, responsive layout, and consistent styling.
+- Do not hardcode user-facing strings; use EasyLocalization keys (LocaleKeys.<key>.tr()).
+- Use existing theme/colors/components if available (don’t invent random styles unless needed).
+
+Routing (Named Routes):
+- Add the route registration in app_route/routes.
+- Provide the exact route key and how to navigate:
+

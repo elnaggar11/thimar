@@ -1,7 +1,7 @@
-import 'package:doctorin/core/utils/app_theme.dart';
-import 'package:doctorin/core/utils/extensions.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:thimar/core/utils/app_theme.dart';
+import 'package:thimar/core/utils/extensions.dart';
 
 class StatusWidget extends StatelessWidget {
   final String status, statusTrans;

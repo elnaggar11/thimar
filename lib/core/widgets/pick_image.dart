@@ -1,14 +1,13 @@
 import 'dart:io';
 
-import 'package:doctorin/core/utils/extensions.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:file_picker/file_picker.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:image_picker/image_picker.dart';
+import 'package:thimar/core/utils/extensions.dart';
 
-import '../../data/models/file.dart';
 import '../../gen/locale_keys.g.dart';
 
 class PickImage extends StatefulWidget {
@@ -94,9 +93,9 @@ class _PickImageState extends State<PickImage> {
       final file = await ImagePicker().pickImage(source: source);
       if (file != null) {
         final fileInfo = await _getFileInfo(file.path);
-        final fileModel = FileModel.fromFileInfo(fileInfo);
+        // final fileModel = FileModel.fromFileInfo(fileInfo);
         if (mounted) {
-          Navigator.pop(context, fileModel);
+          // Navigator.pop(context, fileModel);
         }
       }
     } catch (e) {
@@ -112,9 +111,9 @@ class _PickImageState extends State<PickImage> {
 
       if (result != null && result.files.single.path != null) {
         final fileInfo = await _getFileInfo(result.files.single.path!);
-        final fileModel = FileModel.fromFileInfo(fileInfo);
+        // final fileModel = FileModel.fromFileInfo(fileInfo);
         if (mounted) {
-          Navigator.pop(context, fileModel);
+          // Navigator.pop(context, fileModel);
         }
       }
     } catch (e) {

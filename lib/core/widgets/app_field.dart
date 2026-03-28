@@ -1,11 +1,11 @@
-import 'package:doctorin/core/utils/input_validator.dart';
-import 'package:doctorin/core/widgets/fade_in_slide.dart';
 import 'package:easy_localization/easy_localization.dart' hide TextDirection;
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:thimar/constants/assets.dart';
+import 'package:thimar/core/utils/input_validator.dart';
+import 'package:thimar/core/widgets/fade_in_slide.dart';
 
-import '../../gen/assets.gen.dart';
 import '../../gen/locale_keys.g.dart';
 import '../utils/extensions.dart';
 import 'custom_image.dart';
@@ -295,7 +295,7 @@ class _AppFieldState extends State<AppField> {
           width: 20.w,
           height: 20.w,
           child: CustomImage(
-            showPass ? Assets.svg.eye : Assets.svg.eyeSlash,
+            showPass ? 'Icons.password' : 'Icons.apartment',
             width: 20.w,
             height: 20.w,
             color: context.primaryColor,
