@@ -1,17 +1,17 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:thimar/gen/fonts.gen.dart';
 import 'package:thimar/gen/locale_keys.g.dart';
 
-// import '../../gen/fonts.gen.dart';
 import 'extensions.dart';
 
 class AppThemes {
-  static const mainColor = '#007AFF';
+  static const mainColor = '#4C8613';
   static const lightText = '#6D6D6D';
   static const scaffoldBackgroundColor = Colors.white;
   static const lightColor = '#FFFFFF';
-  static const mainBorder = '#E6E7E9';
+  static const mainBorder = '#F3F3F3';
   static const blackColor = Colors.black;
   static const transparent = Colors.transparent;
   static const rateColor = '#F4BD5B';
@@ -104,21 +104,20 @@ class AppThemes {
       indicatorColor: mainColor.color,
       labelStyle: TextStyle(
         fontSize: 15,
-        fontFamily: 'tajawal',
-        //  fontFamily: FontFamily.iBMPlexSansArabic,
+        fontFamily: FontFamily.tajawal,
         color: mainColor.color,
         fontWeight: FontWeight.w700,
       ),
       unselectedLabelStyle: TextStyle(
         fontSize: 14,
-        //  fontFamily: FontFamily.iBMPlexSansArabic,
+        fontFamily: FontFamily.tajawal,
         color: blackColor,
         fontWeight: FontWeight.w600,
       ),
     ),
     dropdownMenuTheme: DropdownMenuThemeData(
       textStyle: const TextStyle(
-        // fontFamily: FontFamily.iBMPlexSansArabic,
+        fontFamily: FontFamily.tajawal,
         fontSize: 14,
         fontWeight: FontWeight.w400,
       ),
@@ -140,13 +139,13 @@ class AppThemes {
       floatingLabelBehavior: FloatingLabelBehavior.always,
       labelStyle: TextStyle(
         fontSize: 14,
-        //  fontFamily: FontFamily.iBMPlexSansArabic,
+        fontFamily: FontFamily.tajawal,
         color: lightText.color,
         fontWeight: FontWeight.w400,
       ),
       hintStyle: TextStyle(
         fontSize: 12,
-        //  fontFamily: FontFamily.iBMPlexSansArabic,
+        fontFamily: FontFamily.tajawal,
         color: lightText.color,
         fontWeight: FontWeight.w400,
       ),
@@ -196,31 +195,31 @@ class AppThemes {
     labelLarge: TextStyle(
       color: blackColor,
       fontSize: 14,
-      fontFamily: 'tajawal',
+      fontFamily: FontFamily.tajawal,
       fontWeight: FontWeight.w700,
     ),
     headlineMedium: TextStyle(
       color: blackColor,
       fontSize: 14,
-      fontFamily: 'tajawal',
+      fontFamily: FontFamily.tajawal,
       fontWeight: FontWeight.w600,
     ),
     labelMedium: TextStyle(
       color: blackColor,
       fontSize: 14,
-      fontFamily: 'tajawal',
+      fontFamily: FontFamily.tajawal,
       fontWeight: FontWeight.w500,
     ),
     headlineSmall: TextStyle(
       color: blackColor,
       fontSize: 14,
-      fontFamily: 'tajawal',
+      fontFamily: FontFamily.tajawal,
       fontWeight: FontWeight.w400,
     ),
     labelSmall: TextStyle(
       color: blackColor,
       fontSize: 14,
-      fontFamily: 'tajawal',
+      fontFamily: FontFamily.tajawal,
       fontWeight: FontWeight.w300,
     ),
   );

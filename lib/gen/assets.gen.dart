@@ -14,8 +14,20 @@ import 'package:flutter/widgets.dart';
 class $AssetsIconsGen {
   const $AssetsIconsGen();
 
+  /// File path: assets/icons/city.svg
+  String get city => 'assets/icons/city.svg';
+
   /// File path: assets/icons/item.svg
   String get item => 'assets/icons/item.svg';
+
+  /// File path: assets/icons/ksa_flag.svg
+  String get ksaFlag => 'assets/icons/ksa_flag.svg';
+
+  /// File path: assets/icons/password.svg
+  String get password => 'assets/icons/password.svg';
+
+  /// File path: assets/icons/phone.svg
+  String get phone => 'assets/icons/phone.svg';
 
   /// File path: assets/icons/splash_logo.svg
   String get splashLogo => 'assets/icons/splash_logo.svg';
@@ -23,8 +35,20 @@ class $AssetsIconsGen {
   /// File path: assets/icons/thimar_logo.svg
   String get thimarLogo => 'assets/icons/thimar_logo.svg';
 
+  /// File path: assets/icons/user.svg
+  String get user => 'assets/icons/user.svg';
+
   /// List of all assets
-  List<String> get values => [item, splashLogo, thimarLogo];
+  List<String> get values => [
+    city,
+    item,
+    ksaFlag,
+    password,
+    phone,
+    splashLogo,
+    thimarLogo,
+    user,
+  ];
 }
 
 class $AssetsImagesGen {

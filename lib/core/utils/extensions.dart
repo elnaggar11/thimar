@@ -89,6 +89,11 @@ extension StringContext on String {
   }
 }
 
+extension SpaceExtension on num {
+  SizedBox get hSpace => SizedBox(height: h);
+  SizedBox get wSpace => SizedBox(width: w);
+}
+
 extension EnglishToArabicConversion on String {
   bool get isPhoneNumber => startsWith("0") || startsWith("1");
   String get formatPhone => isPhoneNumber

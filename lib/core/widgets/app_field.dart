@@ -2,9 +2,9 @@ import 'package:easy_localization/easy_localization.dart' hide TextDirection;
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:thimar/constants/assets.dart';
 import 'package:thimar/core/utils/input_validator.dart';
 import 'package:thimar/core/widgets/fade_in_slide.dart';
+import 'package:thimar/gen/assets.gen.dart';
 
 import '../../gen/locale_keys.g.dart';
 import '../utils/extensions.dart';
@@ -94,16 +94,26 @@ class _AppFieldState extends State<AppField> {
           FadeInSlide(
             duration: 0.6,
             child: Container(
-              padding: EdgeInsets.symmetric(horizontal: 7.w, vertical: 18.h),
+              // padding: EdgeInsets.symmetric(horizontal: 7.w, vertical: 8.h),
               decoration: BoxDecoration(
                 border: Border.all(color: context.borderColor),
                 borderRadius: BorderRadius.circular(14.r),
               ),
-              child: Text(
-                "+20",
-                style: context.mediumText,
-                textDirection: TextDirection.ltr,
-              ),
+              child: Column(
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  Text("🇸🇦", style: TextStyle(fontSize: 18.sp)),
+                  SizedBox(height: 2.h),
+                  Text(
+                    "+966",
+                    style: context.mediumText.copyWith(
+                      color: context.primaryColor,
+                      fontSize: 15.sp,
+                    ),
+                    textDirection: TextDirection.ltr,
+                  ),
+                ],
+              ).withPadding(horizontal: 18.r, vertical: 8.r),
             ),
           ),
         Expanded(
@@ -117,7 +127,7 @@ class _AppFieldState extends State<AppField> {
                   onFieldSubmitted: widget.onFieldSubmitted,
                   maxLines: widget.maxLines,
                   maxLength: widget.keyboardType == TextInputType.phone
-                      ? 11
+                      ? 9
                       : widget.maxLenght,
                   maxLengthEnforcement: MaxLengthEnforcement.enforced,
                   readOnly: widget.readOnly == true || widget.onTap != null,
@@ -295,6 +305,7 @@ class _AppFieldState extends State<AppField> {
           width: 20.w,
           height: 20.w,
           child: CustomImage(
+            // TODO: change icons
             showPass ? 'Icons.password' : 'Icons.apartment',
             width: 20.w,
             height: 20.w,

@@ -1,9 +1,9 @@
 {
-    "workbench.preferredHighContrastLightColorTheme": "Default Dark Modern",
-    "workbench.preferredLightColorTheme": "Default Dark Modern",
+    "workbench.preferredHighContrastLightColorTheme": "Dark Modern",
+    "workbench.preferredLightColorTheme": "Dark Modern",
     "window.autoDetectColorScheme": true,
     "workbench.preferredDarkColorTheme": "Dark Modern",
     "workbench.colorTheme": "Dark Modern",
-    "workbench.preferredHighContrastColorTheme": "Default Dark Modern",
+    "workbench.preferredHighContrastColorTheme": "Dark Modern",
     "dart.devToolsTheme": "dark"
 }
