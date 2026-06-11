@@ -316,5 +316,28 @@ abstract class  LocaleKeys {
   static const address = 'address';
   static const licenseExpiryDate = 'licenseExpiryDate';
   static const practice_expiry_date = 'practice_expiry_date';
-
+  static const welcomeBack = 'welcomeBack';
+  static const youCanLoginNow = 'youCanLoginNow';
+  static const mobileNumber = 'mobileNumber';
+  static const registerNow = 'registerNow';
+  static const forgetPasswordTitle = 'forgetPasswordTitle';
+  static const enterMobileAssociated = 'enterMobileAssociated';
+  static const confirmMobileNumber = 'confirmMobileNumber';
+  static const alreadyHaveAccount = 'alreadyHaveAccount';
+  static const enterCodeSentTo = 'enterCodeSentTo';
+  static const confirmCode = 'confirmCode';
+  static const youCanResendCodeAfter = 'youCanResendCodeAfter';
+  static const youCanRegisterNewAccountNow = 'youCanRegisterNewAccountNow';
+  static const username = 'username';
+  static const cityName = 'cityName';
+  static const register = 'register';
+  static const favorites = 'favorites';
+  static const personalInfo = 'personalInfo';
+  static const addresses = 'addresses';
+  static const contactUs = 'contactUs';
+  static const complaintsAndSuggestions = 'complaintsAndSuggestions';
+  static const shareApp = 'shareApp';
+  static const aboutApp = 'aboutApp';
+  static const changeLanguage = 'changeLanguage';
+  static const rateApp = 'rateApp';
 }

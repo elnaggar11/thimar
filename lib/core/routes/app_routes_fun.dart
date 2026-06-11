@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-Future push(String named, {dynamic arg}) =>
+Future<dynamic> push(String named, {dynamic arg}) =>
     navigator.currentState!.pushNamed(named, arguments: arg);
 
 Future<dynamic> replacement(String named, {dynamic arg}) => Navigator.of(

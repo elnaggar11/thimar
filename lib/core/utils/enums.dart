@@ -37,9 +37,9 @@ enum AppInfoType { about, terms, privacy, faqs }
 
 enum UpdateProfileType { phone, email }
 
-enum VerifyType { forgetPassword, register, deleteAccount, changePhone }
+enum VerifyType { forgetPassword, register }
 
-enum UserType { doctor, nurse }
+// enum UserType { doctor, nurse }
 
 enum DocumentType {
   profilePhoto,

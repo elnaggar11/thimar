@@ -4,7 +4,6 @@ import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:thimar/core/utils/input_validator.dart';
 import 'package:thimar/core/widgets/fade_in_slide.dart';
-import 'package:thimar/gen/assets.gen.dart';
 
 import '../../gen/locale_keys.g.dart';
 import '../utils/extensions.dart';
@@ -113,7 +112,7 @@ class _AppFieldState extends State<AppField> {
                     textDirection: TextDirection.ltr,
                   ),
                 ],
-              ).withPadding(horizontal: 18.r, vertical: 8.r),
+              ).withPadding(horizontal: 18.r, vertical: 6.r),
             ),
           ),
         Expanded(

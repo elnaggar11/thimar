@@ -14,8 +14,60 @@ import 'package:flutter/widgets.dart';
 class $AssetsIconsGen {
   const $AssetsIconsGen();
 
+  /// File path: assets/icons/Calling.svg
+  String get calling => 'assets/icons/Calling.svg';
+
+  /// File path: assets/icons/Group 17651.svg
+  String get group17651 => 'assets/icons/Group 17651.svg';
+
+  /// File path: assets/icons/Groups 1.svg
+  String get groups1 => 'assets/icons/Groups 1.svg';
+
+  /// File path: assets/icons/Icon ionic-ios-heart-empty.svg
+  String get iconIonicIosHeartEmpty =>
+      'assets/icons/Icon ionic-ios-heart-empty.svg';
+
+  /// File path: assets/icons/Message.svg
+  String get message => 'assets/icons/Message.svg';
+
+  /// File path: assets/icons/NoPath.png
+  AssetGenImage get noPath => const AssetGenImage('assets/icons/NoPath.png');
+
+  /// File path: assets/icons/arrow_left.svg
+  String get arrowLeft => 'assets/icons/arrow_left.svg';
+
+  /// File path: assets/icons/arrow_top.svg
+  String get arrowTop => 'assets/icons/arrow_top.svg';
+
+  /// File path: assets/icons/bag.svg
+  String get bag => 'assets/icons/bag.svg';
+
+  /// File path: assets/icons/call.svg
+  String get call => 'assets/icons/call.svg';
+
   /// File path: assets/icons/city.svg
   String get city => 'assets/icons/city.svg';
+
+  /// File path: assets/icons/duotone_user.svg
+  String get duotoneUser => 'assets/icons/duotone_user.svg';
+
+  /// File path: assets/icons/edit.svg
+  String get edit => 'assets/icons/edit.svg';
+
+  /// File path: assets/icons/edit2.svg
+  String get edit2 => 'assets/icons/edit2.svg';
+
+  /// File path: assets/icons/heart_empty.svg
+  String get heartEmpty => 'assets/icons/heart_empty.svg';
+
+  /// File path: assets/icons/home.svg
+  String get home => 'assets/icons/home.svg';
+
+  /// File path: assets/icons/info.svg
+  String get info => 'assets/icons/info.svg';
+
+  /// File path: assets/icons/info2.svg
+  String get info2 => 'assets/icons/info2.svg';
 
   /// File path: assets/icons/item.svg
   String get item => 'assets/icons/item.svg';
@@ -23,43 +75,132 @@ class $AssetsIconsGen {
   /// File path: assets/icons/ksa_flag.svg
   String get ksaFlag => 'assets/icons/ksa_flag.svg';
 
+  /// File path: assets/icons/language.svg
+  String get language => 'assets/icons/language.svg';
+
+  /// File path: assets/icons/location.svg
+  String get location => 'assets/icons/location.svg';
+
+  /// File path: assets/icons/note.svg
+  String get note => 'assets/icons/note.svg';
+
+  /// File path: assets/icons/note2.svg
+  String get note2 => 'assets/icons/note2.svg';
+
+  /// File path: assets/icons/notification.svg
+  String get notification => 'assets/icons/notification.svg';
+
   /// File path: assets/icons/password.svg
   String get password => 'assets/icons/password.svg';
 
   /// File path: assets/icons/phone.svg
   String get phone => 'assets/icons/phone.svg';
 
+  /// File path: assets/icons/pres.svg
+  String get pres => 'assets/icons/pres.svg';
+
+  /// File path: assets/icons/question.svg
+  String get question => 'assets/icons/question.svg';
+
+  /// File path: assets/icons/setting.svg
+  String get setting => 'assets/icons/setting.svg';
+
+  /// File path: assets/icons/shield.svg
+  String get shield => 'assets/icons/shield.svg';
+
+  /// File path: assets/icons/shopping_cart.svg
+  String get shoppingCart => 'assets/icons/shopping_cart.svg';
+
   /// File path: assets/icons/splash_logo.svg
   String get splashLogo => 'assets/icons/splash_logo.svg';
+
+  /// File path: assets/icons/star.svg
+  String get star => 'assets/icons/star.svg';
 
   /// File path: assets/icons/thimar_logo.svg
   String get thimarLogo => 'assets/icons/thimar_logo.svg';
 
+  /// File path: assets/icons/transfer.svg
+  String get transfer => 'assets/icons/transfer.svg';
+
+  /// File path: assets/icons/trash.svg
+  String get trash => 'assets/icons/trash.svg';
+
+  /// File path: assets/icons/turn_off.svg
+  String get turnOff => 'assets/icons/turn_off.svg';
+
   /// File path: assets/icons/user.svg
   String get user => 'assets/icons/user.svg';
 
+  /// File path: assets/icons/user_nav_bar.svg
+  String get userNavBar => 'assets/icons/user_nav_bar.svg';
+
+  /// File path: assets/icons/vegetable.svg
+  String get vegetable => 'assets/icons/vegetable.svg';
+
+  /// File path: assets/icons/wallet.svg
+  String get wallet => 'assets/icons/wallet.svg';
+
   /// List of all assets
-  List<String> get values => [
+  List<dynamic> get values => [
+    calling,
+    group17651,
+    groups1,
+    iconIonicIosHeartEmpty,
+    message,
+    noPath,
+    arrowLeft,
+    arrowTop,
+    bag,
+    call,
     city,
+    duotoneUser,
+    edit,
+    edit2,
+    heartEmpty,
+    home,
+    info,
+    info2,
     item,
     ksaFlag,
+    language,
+    location,
+    note,
+    note2,
+    notification,
     password,
     phone,
+    pres,
+    question,
+    setting,
+    shield,
+    shoppingCart,
     splashLogo,
+    star,
     thimarLogo,
+    transfer,
+    trash,
+    turnOff,
     user,
+    userNavBar,
+    vegetable,
+    wallet,
   ];
 }
 
 class $AssetsImagesGen {
   const $AssetsImagesGen();
 
+  /// File path: assets/images/Rectangle 3499.png
+  AssetGenImage get rectangle3499 =>
+      const AssetGenImage('assets/images/Rectangle 3499.png');
+
   /// File path: assets/images/splash_background.png
   AssetGenImage get splashBackground =>
       const AssetGenImage('assets/images/splash_background.png');
 
   /// List of all assets
-  List<AssetGenImage> get values => [splashBackground];
+  List<AssetGenImage> get values => [rectangle3499, splashBackground];
 }
 
 class $AssetsTranslationsGen {

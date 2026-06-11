@@ -1,14 +1,15 @@
 import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:thimar/core/services/service_locator.dart';
-import 'package:thimar/presentation/auth/forget_password/controller/cubit/forget_password_cubit.dart';
-import 'package:thimar/presentation/auth/forget_password/view/forget_password_view.dart';
-import 'package:thimar/presentation/auth/login/controller/cubit/login_cubit.dart';
-import 'package:thimar/presentation/auth/login/view/login_view.dart';
-import 'package:thimar/presentation/auth/sign_up/controller/cubit/sign_up_cubit.dart';
-import 'package:thimar/presentation/auth/sign_up/view/sign_up_view.dart';
-import 'package:thimar/presentation/splash/controller/splash_cubit/splash_cubit.dart';
-import 'package:thimar/presentation/splash/view/splash_view.dart';
+import 'package:thimar/feature/auth/forget_password/view.dart';
+import 'package:thimar/feature/auth/login/cubit/login_cubit.dart';
+import 'package:thimar/feature/auth/login/view.dart';
+import 'package:thimar/feature/auth/verify/view.dart';
+import 'package:thimar/feature/auth/sign_up/cubit/sign_up_cubit.dart';
+import 'package:thimar/feature/auth/sign_up/view.dart';
+import 'package:thimar/feature/layout/view.dart';
+import 'package:thimar/feature/splash/cubit/splash_cubit.dart';
+import 'package:thimar/feature/splash/view.dart';
 
 import 'routes.dart';
 
@@ -29,10 +30,13 @@ class AppRoutes {
       create: (context) => sl<SignUpCubit>(),
       child: const SignUpView(),
     ),
-    NamedRoutes.forgetPassword: (c) => BlocProvider(
-      create: (context) => sl<ForgetPasswordCubit>(),
-      child: const ForgetPasswordView(),
-    ),
+    NamedRoutes.forgetPassword: (c) => const ForgetPasswordView(),
+    NamedRoutes.verify: (c) => const VerifyView(),
+    NamedRoutes.layout: (c) => const LayoutView(),
+    // NamedRoutes.resetPassword: (c) => BlocProvider(
+    //   create: (context) => sl<ResetPasswordCubit>(),
+    //   child: const ResetPasswordView(),
+    // ),
     // NamedRoutes.bookingDetailsScreen: (c) => BookingDetailsScreen(
     //   bookingId: c.arg['id'],
     //   bookingDetails: c.arg['data'],
