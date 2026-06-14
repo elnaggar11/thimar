@@ -42,4 +42,5 @@ class NamedRoutes {
   static const changePhone = "/changePhone";
   static const changeEmail = "/changeEmail";
   static const notification = "/notification";
+  static const productDetails = "/productDetails";
 }

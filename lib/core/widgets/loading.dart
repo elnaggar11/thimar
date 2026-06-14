@@ -1,8 +1,10 @@
+import 'package:animate_do/animate_do.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:shimmer/shimmer.dart';
 
+import '../../gen/assets.gen.dart';
 import '../../gen/locale_keys.g.dart';
 import '../utils/extensions.dart';
 import 'custom_image.dart';
@@ -13,38 +15,67 @@ class CustomProgress extends StatelessWidget {
   final Color? color;
   final double? value;
   final Color? backgroundColor;
+  
   const CustomProgress({
     super.key,
-    this.size = 25,
+    this.size = 75, // حجم مناسب وواضح
     this.strokeWidth,
     this.color,
     this.backgroundColor,
     this.value,
   });
+
   @override
-  Widget build(BuildContext context) => Center(
-    child: SizedBox(
-      height: size,
-      width: size,
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.center,
+  Widget build(BuildContext context) {
+    return Center(
+      child: Stack(
+        alignment: Alignment.center,
         children: [
-          SizedBox(
-            height: size,
+          // خلفية دائرية بيضاء مع ظل ناعم (يعطي إحساس بالعمق والاحترافية)
+          Container(
             width: size,
+            height: size,
+            decoration: BoxDecoration(
+              color: Colors.white,
+              shape: BoxShape.circle,
+              boxShadow: [
+                BoxShadow(
+                  color: (color ?? context.primaryColor).withValues(alpha: 0.15),
+                  blurRadius: 15,
+                  spreadRadius: 2,
+                  offset: const Offset(0, 4),
+                ),
+              ],
+            ),
+          ),
+          // دائرة التحميل تدور بالضبط على حافة الخلفية البيضاء
+          SizedBox(
+            width: size,
+            height: size,
             child: CircularProgressIndicator(
               value: value,
-              strokeWidth: strokeWidth ?? 2,
-              backgroundColor: backgroundColor,
+              strokeWidth: strokeWidth ?? 3.5,
+              strokeCap: StrokeCap.round, // حواف ناعمة
               valueColor: AlwaysStoppedAnimation<Color>(
                 color ?? context.primaryColor,
               ),
+              backgroundColor: backgroundColor ?? Colors.transparent, // شفافة لتبرز الخلفية البيضاء
+            ),
+          ),
+          // اللوجو في المنتصف وينبض (بحجم متناسق داخل الدائرة)
+          Pulse(
+            infinite: true,
+            duration: const Duration(milliseconds: 1500), // إبطاء النبض قليلاً ليكون أهدأ
+            child: CustomImage(
+              Assets.icons.thimarLogo,
+              width: size * 0.55, // اللوجو يأخذ 55% من مساحة الدائرة ليترك هوامش مريحة للعين
+              height: size * 0.55,
             ),
           ),
         ],
       ),
-    ),
-  );
+    );
+  }
 }
 
 class LoadingApp extends StatelessWidget {

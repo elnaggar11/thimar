@@ -2,17 +2,21 @@
 
 // ignore_for_file: constant_identifier_names
 
-abstract class  LocaleKeys {
+abstract class LocaleKeys {
   static const language = 'language';
   static const lang = 'lang';
   static const ar = 'ar';
   static const en = 'en';
   static const tryAgain = 'tryAgain';
   static const dataNotFound = 'dataNotFound';
-  static const something_went_wrong_please_try_again = 'something_went_wrong_please_try_again';
-  static const poor_connection_check_the_quality_of_the_internet = 'poor_connection_check_the_quality_of_the_internet';
-  static const please_check_your_internet_connection = 'please_check_your_internet_connection';
-  static const the_phone_number_must_consist_of_val_numbers = 'the_phone_number_must_consist_of_val_numbers';
+  static const something_went_wrong_please_try_again =
+      'something_went_wrong_please_try_again';
+  static const poor_connection_check_the_quality_of_the_internet =
+      'poor_connection_check_the_quality_of_the_internet';
+  static const please_check_your_internet_connection =
+      'please_check_your_internet_connection';
+  static const the_phone_number_must_consist_of_val_numbers =
+      'the_phone_number_must_consist_of_val_numbers';
   static const invalid_phone_number = 'invalid_phone_number';
   static const valueIsRequired = 'valueIsRequired';
   static const valIsRequired = 'valIsRequired';
@@ -20,7 +24,8 @@ abstract class  LocaleKeys {
   static const invalidEmail = 'invalidEmail';
   static const passwordRequired = 'passwordRequired';
   static const passwordDigits = 'passwordDigits';
-  static const passwordMustContainLettersAndNumbers = 'passwordMustContainLettersAndNumbers';
+  static const passwordMustContainLettersAndNumbers =
+      'passwordMustContainLettersAndNumbers';
   static const validate_required = 'validate_required';
   static const validateAtLeast3Digits = 'validateAtLeast3Digits';
   static const requiredField = 'requiredField';
@@ -46,18 +51,21 @@ abstract class  LocaleKeys {
   static const welcomeTo = 'welcomeTo';
   static const pleaseTellUsWhoYouAre = 'pleaseTellUsWhoYouAre';
   static const loginToDoctorIn = 'loginToDoctorIn';
-  static const joinDoctorInAndBookYourDoctorAnytime = 'joinDoctorInAndBookYourDoctorAnytime';
+  static const joinDoctorInAndBookYourDoctorAnytime =
+      'joinDoctorInAndBookYourDoctorAnytime';
   static const emailOrPhone = 'emailOrPhone';
   static const forgotPassword = 'forgotPassword';
   static const dontHaveAnAccount = 'dontHaveAnAccount';
-  static const joinUsAndProvideMedicalConsultationsAnytime = 'joinUsAndProvideMedicalConsultationsAnytime';
+  static const joinUsAndProvideMedicalConsultationsAnytime =
+      'joinUsAndProvideMedicalConsultationsAnytime';
   static const sendCode = 'sendCode';
   static const code = 'code';
   static const contains_4 = 'contains_4';
   static const verify_code = 'verify_code';
   static const verification_message = 'verification_message';
   static const enterCodeInBoxBelow = 'enterCodeInBoxBelow';
-  static const PleaseEnterYourEmailOrPhoneNumberToRestYourPassword = 'PleaseEnterYourEmailOrPhoneNumberToRestYourPassword';
+  static const PleaseEnterYourEmailOrPhoneNumberToRestYourPassword =
+      'PleaseEnterYourEmailOrPhoneNumberToRestYourPassword';
   static const continu = 'continu';
   static const confirmPasswordRequired = 'confirmPasswordRequired';
   static const validateMustMatchPassword = 'validateMustMatchPassword';
@@ -68,7 +76,8 @@ abstract class  LocaleKeys {
   static const enterYouNewPasswordMakeSureIt = 'enterYouNewPasswordMakeSureIt';
   static const personalData = 'personalData';
   static const next = 'next';
-  static const there_are_no_items_to_display_in_this_section = 'there_are_no_items_to_display_in_this_section';
+  static const there_are_no_items_to_display_in_this_section =
+      'there_are_no_items_to_display_in_this_section';
   static const please_select_a_val = 'please_select_a_val';
   static const fullNameAsShownInID = 'fullNameAsShownInID';
   static const nickname = 'nickname';
@@ -97,7 +106,8 @@ abstract class  LocaleKeys {
   static const useAPlainBackground = 'useAPlainBackground';
   static const avoidBlurOrMovement = 'avoidBlurOrMovement';
   static const cameraInstructions = 'cameraInstructions';
-  static const verifyYourIdentityByTakingAClearPhotoThatMatchesYourOfficialID = 'verifyYourIdentityByTakingAClearPhotoThatMatchesYourOfficialID';
+  static const verifyYourIdentityByTakingAClearPhotoThatMatchesYourOfficialID =
+      'verifyYourIdentityByTakingAClearPhotoThatMatchesYourOfficialID';
   static const openCamera = 'openCamera';
   static const uploadFile = 'uploadFile';
   static const attachments = 'attachments';
@@ -109,8 +119,10 @@ abstract class  LocaleKeys {
   static const graduationCertificate = 'graduationCertificate';
   static const experienceCertificate = 'experienceCertificate';
   static const specialityCertificate = 'specialityCertificate';
-  static const medicalAssociationMembershipFront = 'medicalAssociationMembershipFront';
-  static const medicalAssociationMembershipBack = 'medicalAssociationMembershipBack';
+  static const medicalAssociationMembershipFront =
+      'medicalAssociationMembershipFront';
+  static const medicalAssociationMembershipBack =
+      'medicalAssociationMembershipBack';
   static const professionalPracticePermit = 'professionalPracticePermit';
   static const medicalBag = 'medicalBag';
   static const enterYourRegistrationNumber = 'enterYourRegistrationNumber';
@@ -121,9 +133,11 @@ abstract class  LocaleKeys {
   static const licenseNumber = 'licenseNumber';
   static const enterYourLicenseDate = 'enterYourLicenseDate';
   static const licenseDate = 'licenseDate';
-  static const IConfirmThatIHaveReadUnderstoodAndAgreeToFollowTheMedicalEthicsPolicy = 'IConfirmThatIHaveReadUnderstoodAndAgreeToFollowTheMedicalEthicsPolicy';
+  static const IConfirmThatIHaveReadUnderstoodAndAgreeToFollowTheMedicalEthicsPolicy =
+      'IConfirmThatIHaveReadUnderstoodAndAgreeToFollowTheMedicalEthicsPolicy';
   static const justFewMoreSteps = 'justFewMoreSteps';
-  static const yourAccountHasBeenCreatedSuccessfully = 'yourAccountHasBeenCreatedSuccessfully';
+  static const yourAccountHasBeenCreatedSuccessfully =
+      'yourAccountHasBeenCreatedSuccessfully';
   static const defaultLocation = 'defaultLocation';
   static const confirmLocation = 'confirmLocation';
   static const location = 'location';
@@ -131,7 +145,8 @@ abstract class  LocaleKeys {
   static const locationPermissionExplanation = 'locationPermissionExplanation';
   static const continueWithout = 'continueWithout';
   static const allowLocation = 'allowLocation';
-  static const toReceiveNearbyPatientRequestsAndNavigateToClientLocationsPleaseAllowLocationAccess = 'toReceiveNearbyPatientRequestsAndNavigateToClientLocationsPleaseAllowLocationAccess';
+  static const toReceiveNearbyPatientRequestsAndNavigateToClientLocationsPleaseAllowLocationAccess =
+      'toReceiveNearbyPatientRequestsAndNavigateToClientLocationsPleaseAllowLocationAccess';
   static const setYourVisitPrices = 'setYourVisitPrices';
   static const instantBooking = 'instantBooking';
   static const standardBooking = 'standardBooking';
@@ -159,7 +174,8 @@ abstract class  LocaleKeys {
   static const iAm = 'iAm';
   static const doctor = 'doctor';
   static const nurse = 'nurse';
-  static const provideMedicalCareAndConsultations = 'provideMedicalCareAndConsultations';
+  static const provideMedicalCareAndConsultations =
+      'provideMedicalCareAndConsultations';
   static const patientCareAndSupport = 'patientCareAndSupport';
   static const continueAsDoctor = 'continueAsDoctor';
   static const continueAsNurse = 'continueAsNurse';
@@ -184,12 +200,15 @@ abstract class  LocaleKeys {
   static const numberOfPatientsThisWeek = 'numberOfPatientsThisWeek';
   static const delaysAndWarning = 'delaysAndWarning';
   static const cancelationRate = 'cancelationRate';
-  static const arriveOnTimeToMaintainYourRating = 'arriveOnTimeToMaintainYourRating';
+  static const arriveOnTimeToMaintainYourRating =
+      'arriveOnTimeToMaintainYourRating';
   static const basedOnTotalBookings = 'basedOnTotalBookings';
   static const completeYourProfile = 'completeYourProfile';
-  static const completeYourProfileToStartGettingAppointments = 'completeYourProfileToStartGettingAppointments';
+  static const completeYourProfileToStartGettingAppointments =
+      'completeYourProfileToStartGettingAppointments';
   static const cancelAppointment = 'cancelAppointment';
-  static const areYouSureYouWantToRejectThisAppointment = 'areYouSureYouWantToRejectThisAppointment';
+  static const areYouSureYouWantToRejectThisAppointment =
+      'areYouSureYouWantToRejectThisAppointment';
   static const yesCancel = 'yesCancel';
   static const no = 'no';
   static const confirmCancellation = 'confirmCancellation';
@@ -211,14 +230,17 @@ abstract class  LocaleKeys {
   static const inProgress = 'inProgress';
   static const ended = 'ended';
   static const appointmentDetails = 'appointmentDetails';
-  static const paymentWillBeRequestedAfterYourApproval = 'paymentWillBeRequestedAfterYourApproval';
+  static const paymentWillBeRequestedAfterYourApproval =
+      'paymentWillBeRequestedAfterYourApproval';
   static const dateAndTime = 'dateAndTime';
-  static const preparingTimeStartsRightAfterPayment = 'preparingTimeStartsRightAfterPayment';
+  static const preparingTimeStartsRightAfterPayment =
+      'preparingTimeStartsRightAfterPayment';
   static const appointmentTime = 'appointmentTime';
   static const visitAddress = 'visitAddress';
   static const away = 'away';
   static const patientNote = 'patientNote';
-  static const iVeHadASevereHeadacheForTwoDaysAndPainkillersDidntHelp = 'iVeHadASevereHeadacheForTwoDaysAndPainkillersDidntHelp';
+  static const iVeHadASevereHeadacheForTwoDaysAndPainkillersDidntHelp =
+      'iVeHadASevereHeadacheForTwoDaysAndPainkillersDidntHelp';
   static const summary = 'summary';
   static const doctorInPer = 'doctorInPer';
   static const total = 'total';
@@ -238,10 +260,12 @@ abstract class  LocaleKeys {
   static const appointmentInProgress = 'appointmentInProgress';
   static const theAppointmentWillEndsIn = 'theAppointmentWillEndsIn';
   static const success = 'success';
-  static const appointmentCompletedSuccessfully = 'appointmentCompletedSuccessfully';
+  static const appointmentCompletedSuccessfully =
+      'appointmentCompletedSuccessfully';
   static const wasAddedToYourWalletBalance = 'wasAddedToYourWalletBalance';
   static const patientCanceledTheVisit = 'patientCanceledTheVisit';
-  static const uhohLooksLikeCanceledTheAppointment = 'uhohLooksLikeCanceledTheAppointment';
+  static const uhohLooksLikeCanceledTheAppointment =
+      'uhohLooksLikeCanceledTheAppointment';
   static const history = 'history';
   static const walletRecharged = 'walletRecharged';
   static const bookingPayment = 'bookingPayment';
@@ -250,14 +274,17 @@ abstract class  LocaleKeys {
   static const rechargeWallet = 'rechargeWallet';
   static const addAmount = 'addAmount';
   static const enterAmount = 'enterAmount';
-  static const enterAmountToRechargeYourWallet = 'enterAmountToRechargeYourWallet';
+  static const enterAmountToRechargeYourWallet =
+      'enterAmountToRechargeYourWallet';
   static const selectPaymentMethod = 'selectPaymentMethod';
-  static const selectPaymentMethodToRechargeYourWallet = 'selectPaymentMethodToRechargeYourWallet';
+  static const selectPaymentMethodToRechargeYourWallet =
+      'selectPaymentMethodToRechargeYourWallet';
   static const transferTo = 'transferTo';
   static const withDrawRequests = 'withDrawRequests';
   static const profile = 'profile';
   static const availablity = 'availablity';
-  static const availableAndReadyToReceiveAppointments = 'availableAndReadyToReceiveAppointments';
+  static const availableAndReadyToReceiveAppointments =
+      'availableAndReadyToReceiveAppointments';
   static const ratings = 'ratings';
   static const settings = 'settings';
   static const aboutUs = 'aboutUs';
@@ -281,15 +308,19 @@ abstract class  LocaleKeys {
   static const remove = 'remove';
   static const discountPercentage = 'discountPercentage';
   static const removeDiscount = 'removeDiscount';
-  static const areYouSureYouWantToRemoveThisDiscount = 'areYouSureYouWantToRemoveThisDiscount';
+  static const areYouSureYouWantToRemoveThisDiscount =
+      'areYouSureYouWantToRemoveThisDiscount';
   static const yesRemove = 'yesRemove';
   static const noStay = 'noStay';
   static const yesDelete = 'yesDelete';
   static const keepGoing = 'keepGoing';
   static const unrecoverableWalletBalance = 'unrecoverableWalletBalance';
-  static const youStillHaveBalanceInYourWalletOnceYouDeleteYourAccountTheRemainingAmountCannotBeRestoredAreYouSureYouWantToContinue = 'youStillHaveBalanceInYourWalletOnceYouDeleteYourAccountTheRemainingAmountCannotBeRestoredAreYouSureYouWantToContinue';
-  static const youAreAboutToDeleteYourAccountAreYouSureYouWantToDoThat = 'youAreAboutToDeleteYourAccountAreYouSureYouWantToDoThat';
-  static const weAreSadToSeeYouGoPleaseComeBackSoon = 'weAreSadToSeeYouGoPleaseComeBackSoon';
+  static const youStillHaveBalanceInYourWalletOnceYouDeleteYourAccountTheRemainingAmountCannotBeRestoredAreYouSureYouWantToContinue =
+      'youStillHaveBalanceInYourWalletOnceYouDeleteYourAccountTheRemainingAmountCannotBeRestoredAreYouSureYouWantToContinue';
+  static const youAreAboutToDeleteYourAccountAreYouSureYouWantToDoThat =
+      'youAreAboutToDeleteYourAccountAreYouSureYouWantToDoThat';
+  static const weAreSadToSeeYouGoPleaseComeBackSoon =
+      'weAreSadToSeeYouGoPleaseComeBackSoon';
   static const deleteAccount = 'deleteAccount';
   static const faqs = 'faqs';
   static const termsAndConditions = 'termsAndConditions';
@@ -340,4 +371,35 @@ abstract class  LocaleKeys {
   static const aboutApp = 'aboutApp';
   static const changeLanguage = 'changeLanguage';
   static const rateApp = 'rateApp';
+  static const deliveryTo = 'deliveryTo';
+  static const searchHome = 'searchHome';
+  static const categories = 'categories';
+  static const products = 'products';
+  static const pricePerKg = 'pricePerKg';
+  static const sar = 'sar';
+  static const addToCart = 'addToCart';
+  static const viewAll = 'viewAll';
+  static const vegetables = 'vegetables';
+  static const fruits = 'fruits';
+  static const meat = 'meat';
+  static const spices = 'spices';
+  static const permanentOffers = 'permanentOffers';
+  static const cash_payment = 'cash_payment';
+  static const online_payment = 'online_payment';
+  static const unpaid = 'unpaid';
+  static const paymentFailed = 'paymentFailed';
+  static const created = 'created';
+  static const assignedAt = 'assignedAt';
+  static const pickedUpAt = 'pickedUpAt';
+  static const outForDeliveryAt = 'outForDeliveryAt';
+  static const deliveredAt = 'deliveredAt';
+  static const processing = 'processing';
+  static const priceSent = 'priceSent';
+  static const executing = 'executing';
+  static const completed = 'completed';
+  static const canceled = 'canceled';
+  static const pending = 'pending';
+  static const productDetails = 'productDetails';
+  static const productCode = 'productCode';
+  static const similarProducts = 'similarProducts';
 }

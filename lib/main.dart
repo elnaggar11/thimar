@@ -1,7 +1,10 @@
+import 'dart:io';
+
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import 'package:thimar/core/routes/app_routes.dart';
 import 'package:thimar/core/routes/app_routes_fun.dart';
 import 'package:thimar/core/routes/routes.dart';
@@ -29,8 +32,8 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return EasyLocalization(
       path: 'assets/translations',
-      startLocale: const Locale('ar'),
-      fallbackLocale: const Locale('ar'),
+      startLocale: const Locale('en'),
+      fallbackLocale: const Locale('en'),
       supportedLocales: const [Locale('ar'), Locale('en')],
       child: ScreenUtilInit(
         useInheritedMediaQuery: true,
@@ -74,5 +77,15 @@ class MyApp extends StatelessWidget {
         },
       ),
     );
+  }
+}
+
+late SharedPreferences prefs;
+
+class MyHttpOverrides extends HttpOverrides {
+  @override
+  HttpClient createHttpClient(SecurityContext? context) {
+    return super.createHttpClient(context)
+      ..badCertificateCallback = (cert, host, port) => true;
   }
 }

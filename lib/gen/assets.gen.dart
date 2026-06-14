@@ -17,9 +17,6 @@ class $AssetsIconsGen {
   /// File path: assets/icons/Calling.svg
   String get calling => 'assets/icons/Calling.svg';
 
-  /// File path: assets/icons/Group 17651.svg
-  String get group17651 => 'assets/icons/Group 17651.svg';
-
   /// File path: assets/icons/Groups 1.svg
   String get groups1 => 'assets/icons/Groups 1.svg';
 
@@ -41,6 +38,9 @@ class $AssetsIconsGen {
 
   /// File path: assets/icons/bag.svg
   String get bag => 'assets/icons/bag.svg';
+
+  /// File path: assets/icons/buy.svg
+  String get buy => 'assets/icons/buy.svg';
 
   /// File path: assets/icons/call.svg
   String get call => 'assets/icons/call.svg';
@@ -144,7 +144,6 @@ class $AssetsIconsGen {
   /// List of all assets
   List<dynamic> get values => [
     calling,
-    group17651,
     groups1,
     iconIonicIosHeartEmpty,
     message,
@@ -152,6 +151,7 @@ class $AssetsIconsGen {
     arrowLeft,
     arrowTop,
     bag,
+    buy,
     call,
     city,
     duotoneUser,

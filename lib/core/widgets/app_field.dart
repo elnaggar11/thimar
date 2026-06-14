@@ -4,6 +4,7 @@ import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:thimar/core/utils/input_validator.dart';
 import 'package:thimar/core/widgets/fade_in_slide.dart';
+import 'package:thimar/gen/fonts.gen.dart';
 
 import '../../gen/locale_keys.g.dart';
 import '../utils/extensions.dart';
@@ -29,6 +30,7 @@ class AppField extends StatefulWidget {
   final InputBorder? border;
   final List<TextInputFormatter>? inputFormatters;
   final double? height;
+  final Color? hintColor;
 
   const AppField({
     super.key,
@@ -55,6 +57,7 @@ class AppField extends StatefulWidget {
     this.direction,
     this.inputFormatters,
     this.height,
+    this.hintColor,
   });
 
   @override
@@ -122,6 +125,7 @@ class _AppFieldState extends State<AppField> {
               children: [
                 TextFormField(
                   focusNode: _focusNode,
+
                   onChanged: widget.onChanged,
                   onFieldSubmitted: widget.onFieldSubmitted,
                   maxLines: widget.maxLines,
@@ -190,7 +194,10 @@ class _AppFieldState extends State<AppField> {
                                 args: [widget.title ?? ''],
                               )
                             : null),
-                    hintStyle: context.mediumText,
+                    hintStyle: context.mediumText.copyWith(
+                      color: widget.hintColor,
+                      fontFamily: FontFamily.tajawal,
+                    ),
                     counterText:
                         (widget.keyboardType == TextInputType.phone ||
                             widget.maxLenght != null)

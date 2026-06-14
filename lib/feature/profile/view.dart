@@ -1,3 +1,4 @@
+import 'package:animate_do/animate_do.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -9,11 +10,111 @@ import 'package:thimar/feature/profile/widgets/profile_item.dart';
 import 'package:thimar/gen/assets.gen.dart';
 import 'package:thimar/gen/locale_keys.g.dart';
 
+class _ProfileItemData {
+  final String title;
+  final String icon;
+  final VoidCallback onTap;
+
+  const _ProfileItemData({
+    required this.title,
+    required this.icon,
+    required this.onTap,
+  });
+}
+
 class ProfileView extends StatelessWidget {
   const ProfileView({super.key});
 
   @override
   Widget build(BuildContext context) {
+    final group1 = [
+      _ProfileItemData(
+        title: LocaleKeys.personalInfo.tr(),
+        icon: Assets.icons.duotoneUser,
+        onTap: () {},
+      ),
+      _ProfileItemData(
+        title: LocaleKeys.wallet.tr(),
+        icon: Assets.icons.wallet,
+        onTap: () {},
+      ),
+      _ProfileItemData(
+        title: LocaleKeys.addresses.tr(),
+        icon: Assets.icons.location,
+        onTap: () {},
+      ),
+      _ProfileItemData(
+        title: LocaleKeys.payment.tr(),
+        icon: Assets.icons.buy,
+        onTap: () {},
+      ),
+    ];
+
+    final group2 = [
+      _ProfileItemData(
+        title: LocaleKeys.faqs.tr(),
+        icon: Assets.icons.question,
+        onTap: () {},
+      ),
+      _ProfileItemData(
+        title: LocaleKeys.privacyPolicy.tr(),
+        icon: Assets.icons.shield,
+        onTap: () {},
+      ),
+      _ProfileItemData(
+        title: LocaleKeys.contactUs.tr(),
+        icon: Assets.icons.call,
+        onTap: () {},
+      ),
+      _ProfileItemData(
+        title: LocaleKeys.complaintsAndSuggestions.tr(),
+        icon: Assets.icons.edit,
+        onTap: () {},
+      ),
+      _ProfileItemData(
+        title: LocaleKeys.shareApp.tr(),
+        icon: Assets.icons.info,
+        onTap: () {},
+      ),
+    ];
+
+    final group3 = [
+      _ProfileItemData(
+        title: LocaleKeys.aboutApp.tr(),
+        icon: Assets.icons.info2,
+        onTap: () {},
+      ),
+      _ProfileItemData(
+        title: LocaleKeys.changeLanguage.tr(),
+        icon: Assets.icons.language,
+        onTap: () {},
+      ),
+      _ProfileItemData(
+        title: LocaleKeys.termsAndConditions.tr(),
+        icon: Assets.icons.note2,
+        onTap: () {},
+      ),
+      _ProfileItemData(
+        title: LocaleKeys.rateApp.tr(),
+        icon: Assets.icons.star,
+        onTap: () {},
+      ),
+    ];
+
+    int globalIndex = 0;
+
+    Widget buildItem(_ProfileItemData item, int index) {
+      return FadeInUp(
+        duration: const Duration(milliseconds: 400),
+        delay: Duration(milliseconds: 50 * index),
+        child: ProfileItem(
+          title: item.title,
+          iconPath: item.icon,
+          onTap: item.onTap,
+        ),
+      );
+    }
+
     return BlocProvider(
       create: (context) => sl<ProfileCubit>(),
       child: Scaffold(
@@ -25,109 +126,60 @@ class ProfileView extends StatelessWidget {
                 padding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 24.h),
                 child: Column(
                   children: [
-                    Container(
-                      padding: EdgeInsets.symmetric(vertical: 8.h),
-                      decoration: BoxDecoration(
-                        color: Colors.white,
-                        borderRadius: BorderRadius.circular(16.r),
-                        boxShadow: [
-                          BoxShadow(
-                            color: Colors.black.withValues(alpha: 0.05),
-                            blurRadius: 10,
-                            offset: const Offset(0, 5),
-                          ),
-                        ],
-                      ),
-                      child: Column(
-                        children: [
-                          ProfileItem(
-                            title: LocaleKeys.personalInfo.tr(),
-                            iconPath: Assets.icons.duotoneUser, // from dir list
-                            onTap: () {},
-                          ),
-                          ProfileItem(
-                            title: LocaleKeys.wallet.tr(),
-                            iconPath: Assets.icons.wallet,
-                            onTap: () {},
-                          ),
-                          ProfileItem(
-                            title: LocaleKeys.addresses.tr(),
-                            iconPath: Assets.icons.location,
-                            onTap: () {},
-                          ),
-                          ProfileItem(
-                            title: LocaleKeys.payment.tr(),
-                            iconPath: Assets.icons.note,
-                            onTap: () {},
-                          ),
-                          20.verticalSpace,
-                          ProfileItem(
-                            title: LocaleKeys.faqs.tr(),
-                            iconPath: Assets.icons.question,
-                            onTap: () {},
-                          ),
-                          ProfileItem(
-                            title: LocaleKeys.privacyPolicy.tr(),
-                            iconPath: Assets.icons.shield,
-                            onTap: () {},
-                          ),
-                          ProfileItem(
-                            title: LocaleKeys.contactUs.tr(),
-                            iconPath: Assets.icons.call,
-                            onTap: () {},
-                          ),
-                          ProfileItem(
-                            title: LocaleKeys.complaintsAndSuggestions.tr(),
-                            iconPath: Assets.icons.edit,
-                            onTap: () {},
-                          ),
-                          ProfileItem(
-                            title: LocaleKeys.shareApp.tr(),
-                            iconPath: Assets.icons.info,
-                            onTap: () {},
-                          ),
-                          20.verticalSpace,
-                          ProfileItem(
-                            title: LocaleKeys.aboutApp.tr(),
-                            iconPath: Assets.icons.info2,
-                            onTap: () {},
-                          ),
-                          ProfileItem(
-                            title: LocaleKeys.changeLanguage.tr(),
-                            iconPath: Assets.icons.language,
-                            onTap: () {},
-                          ),
-                          ProfileItem(
-                            title: LocaleKeys.termsAndConditions.tr(),
-                            iconPath: Assets.icons.note2,
-                            onTap: () {},
-                          ),
-                          ProfileItem(
-                            title: LocaleKeys.rateApp.tr(),
-                            iconPath: Assets.icons.star,
-                            onTap: () {},
-                          ),
-                        ],
+                    FadeInUp(
+                      duration: const Duration(milliseconds: 500),
+                      child: Container(
+                        padding: EdgeInsets.symmetric(vertical: 8.h),
+                        decoration: BoxDecoration(
+                          color: Colors.white,
+                          borderRadius: BorderRadius.circular(16.r),
+                          boxShadow: [
+                            BoxShadow(
+                              color: Colors.black.withValues(alpha: 0.05),
+                              blurRadius: 10,
+                              offset: const Offset(0, 5),
+                            ),
+                          ],
+                        ),
+                        child: Column(
+                          children: [
+                            ...group1.map(
+                              (item) => buildItem(item, globalIndex++),
+                            ),
+                            20.verticalSpace,
+                            ...group2.map(
+                              (item) => buildItem(item, globalIndex++),
+                            ),
+                            20.verticalSpace,
+                            ...group3.map(
+                              (item) => buildItem(item, globalIndex++),
+                            ),
+                          ],
+                        ),
                       ),
                     ),
                     SizedBox(height: 24.h),
-                    Container(
-                      decoration: BoxDecoration(
-                        color: Colors.white,
-                        borderRadius: BorderRadius.circular(16.r),
-                        boxShadow: [
-                          BoxShadow(
-                            color: Colors.black.withValues(alpha: 0.05),
-                            blurRadius: 10,
-                            offset: const Offset(0, 5),
-                          ),
-                        ],
-                      ),
-                      child: ProfileItem(
-                        title: LocaleKeys.logout.tr(),
-                        iconPath: Assets.icons.turnOff,
-                        hasTrailing: true,
-                        onTap: () {},
+                    FadeInUp(
+                      duration: const Duration(milliseconds: 450),
+                      delay: Duration(milliseconds: 50 * globalIndex),
+                      child: Container(
+                        decoration: BoxDecoration(
+                          color: Colors.white,
+                          borderRadius: BorderRadius.circular(16.r),
+                          boxShadow: [
+                            BoxShadow(
+                              color: Colors.black.withValues(alpha: 0.05),
+                              blurRadius: 10,
+                              offset: const Offset(0, 5),
+                            ),
+                          ],
+                        ),
+                        child: ProfileItem(
+                          title: LocaleKeys.logout.tr(),
+                          iconPath: Assets.icons.turnOff,
+                          hasTrailing: true,
+                          onTap: () {},
+                        ),
                       ),
                     ),
                     SizedBox(height: 40.h),

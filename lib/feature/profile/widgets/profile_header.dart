@@ -1,3 +1,4 @@
+import 'package:animate_do/animate_do.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -19,42 +20,56 @@ class ProfileHeader extends StatelessWidget {
       ),
       child: Column(
         children: [
-          Text(
-            LocaleKeys.profile.tr(),
-            style: context.boldText.copyWith(
-              fontSize: 20.sp,
-              color: Colors.white,
+          FadeInDown(
+            duration: const Duration(milliseconds: 400),
+            child: Text(
+              LocaleKeys.profile.tr(),
+              style: context.boldText.copyWith(
+                fontSize: 20.sp,
+                color: Colors.white,
+              ),
             ),
           ),
           SizedBox(height: 24.h),
-          Container(
-            height: 80.w,
-            width: 80.w,
-            decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(20.r),
-              border: Border.all(color: Colors.white, width: 2.w),
-            ),
-            child: ClipRRect(
-              borderRadius: BorderRadius.circular(18.r),
-              child: const CustomImage(
-                'https://randomuser.me/api/portraits/men/32.jpg', // Placeholder for now
+          ZoomIn(
+            duration: const Duration(milliseconds: 600),
+            child: Container(
+              height: 80.w,
+              width: 80.w,
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(20.r),
+                border: Border.all(color: Colors.white, width: 2.w),
+              ),
+              child: ClipRRect(
+                borderRadius: BorderRadius.circular(18.r),
+                child: const CustomImage(
+                  'https://randomuser.me/api/portraits/men/32.jpg', // Placeholder for now
+                ),
               ),
             ),
           ),
           SizedBox(height: 12.h),
-          Text(
-            "محمد علي", // Mock data, should come from cubit/user model
-            style: context.boldText.copyWith(
-              fontSize: 16.sp,
-              color: Colors.white,
+          FadeInDown(
+            duration: const Duration(milliseconds: 500),
+            delay: const Duration(milliseconds: 200),
+            child: Text(
+              "محمد علي", // Mock data, should come from cubit/user model
+              style: context.boldText.copyWith(
+                fontSize: 16.sp,
+                color: Colors.white,
+              ),
             ),
           ),
           SizedBox(height: 4.h),
-          Text(
-            "+96654787856", // Mock data
-            style: context.regularText.copyWith(
-              fontSize: 14.sp,
-              color: Colors.white70,
+          FadeInDown(
+            duration: const Duration(milliseconds: 500),
+            delay: const Duration(milliseconds: 300),
+            child: Text(
+              "+96654787856", // Mock data
+              style: context.regularText.copyWith(
+                fontSize: 14.sp,
+                color: Colors.white70,
+              ),
             ),
           ),
         ],

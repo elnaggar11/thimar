@@ -10,6 +10,9 @@ import 'package:thimar/feature/favorites/cubit/favorites_cubit.dart';
 import 'package:thimar/feature/profile/cubit/profile_cubit.dart';
 import 'package:thimar/feature/notifications/cubit/notifications_cubit.dart';
 
+import 'package:thimar/feature/home/cubit/home_cubit.dart';
+import 'package:thimar/feature/product_details/cubit/product_details_cubit.dart';
+
 final sl = GetIt.instance;
 
 class ServicesLocator {
@@ -20,9 +23,11 @@ class ServicesLocator {
     sl.registerFactory(() => SignUpCubit());
     sl.registerFactory(() => ForgetPasswordCubit());
     sl.registerFactory(() => LayoutCubit());
+    sl.registerFactory(() => HomeCubit());
     sl.registerFactory(() => OrdersCubit());
     sl.registerFactory(() => FavoritesCubit());
     sl.registerFactory(() => ProfileCubit());
     sl.registerFactory(() => NotificationsCubit());
+    sl.registerFactory(() => ProductDetailsCubit());
   }
 }
