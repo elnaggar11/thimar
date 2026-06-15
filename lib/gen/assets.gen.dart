@@ -57,6 +57,12 @@ class $AssetsIconsGen {
   /// File path: assets/icons/edit2.svg
   String get edit2 => 'assets/icons/edit2.svg';
 
+  /// File path: assets/icons/eye-slash.svg
+  String get eyeSlash => 'assets/icons/eye-slash.svg';
+
+  /// File path: assets/icons/eye.svg
+  String get eye => 'assets/icons/eye.svg';
+
   /// File path: assets/icons/heart_empty.svg
   String get heartEmpty => 'assets/icons/heart_empty.svg';
 
@@ -157,6 +163,8 @@ class $AssetsIconsGen {
     duotoneUser,
     edit,
     edit2,
+    eyeSlash,
+    eye,
     heartEmpty,
     home,
     info,

@@ -4,6 +4,7 @@ import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:thimar/core/utils/input_validator.dart';
 import 'package:thimar/core/widgets/fade_in_slide.dart';
+import 'package:thimar/gen/assets.gen.dart';
 import 'package:thimar/gen/fonts.gen.dart';
 
 import '../../gen/locale_keys.g.dart';
@@ -130,7 +131,7 @@ class _AppFieldState extends State<AppField> {
                   onFieldSubmitted: widget.onFieldSubmitted,
                   maxLines: widget.maxLines,
                   maxLength: widget.keyboardType == TextInputType.phone
-                      ? 9
+                      ? 10
                       : widget.maxLenght,
                   maxLengthEnforcement: MaxLengthEnforcement.enforced,
                   readOnly: widget.readOnly == true || widget.onTap != null,
@@ -312,7 +313,7 @@ class _AppFieldState extends State<AppField> {
           height: 20.w,
           child: CustomImage(
             // TODO: change icons
-            showPass ? 'Icons.password' : 'Icons.apartment',
+            showPass ? Assets.icons.eye : Assets.icons.eyeSlash,
             width: 20.w,
             height: 20.w,
             color: context.primaryColor,

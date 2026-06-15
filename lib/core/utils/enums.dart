@@ -39,8 +39,6 @@ enum UpdateProfileType { phone, email }
 
 enum VerifyType { forgetPassword, register }
 
-// enum UserType { doctor, nurse }
-
 enum DocumentType {
   profilePhoto,
   identityPhoto,

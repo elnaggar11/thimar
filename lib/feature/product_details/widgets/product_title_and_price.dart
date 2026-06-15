@@ -30,11 +30,17 @@ class ProductTitleAndPrice extends StatelessWidget {
           children: [
             Text(
               product.name,
-              style: context.boldText.copyWith(fontSize: 22.sp, color: context.primaryColor),
+              style: context.boldText.copyWith(
+                fontSize: 22.sp,
+                color: context.primaryColor,
+              ),
             ),
             Text(
               LocaleKeys.pricePerKg.tr(),
-              style: context.regularText.copyWith(fontSize: 14.sp, color: context.hintColor),
+              style: context.regularText.copyWith(
+                fontSize: 14.sp,
+                color: context.hintColor,
+              ),
             ),
           ],
         ),
@@ -45,7 +51,10 @@ class ProductTitleAndPrice extends StatelessWidget {
               children: [
                 Text(
                   '${product.priceAfterDiscount} ${LocaleKeys.sar.tr()}',
-                  style: context.boldText.copyWith(fontSize: 16.sp, color: context.primaryColor),
+                  style: context.boldText.copyWith(
+                    fontSize: 16.sp,
+                    color: context.primaryColor,
+                  ),
                 ),
                 SizedBox(width: 8.w),
                 Text(
@@ -59,39 +68,89 @@ class ProductTitleAndPrice extends StatelessWidget {
                 SizedBox(width: 8.w),
                 Text(
                   '${product.discount.toInt()}%',
-                  style: context.boldText.copyWith(fontSize: 14.sp, color: Colors.red),
+                  style: context.boldText.copyWith(
+                    fontSize: 14.sp,
+                    color: Colors.red,
+                  ),
                 ),
               ],
             ),
             SizedBox(height: 8.h),
-            Container(
-              padding: EdgeInsets.symmetric(horizontal: 12.w, vertical: 6.h),
-              decoration: BoxDecoration(
-                color: const Color(0xFF61B80C).withValues(alpha: 0.1),
-                borderRadius: BorderRadius.circular(8.r),
-              ),
-              child: Row(
-                children: [
-                  InkWell(
-                    onTap: onDecrement,
-                    child: Icon(Icons.remove, color: const Color(0xFF61B80C), size: 20.sp),
-                  ),
-                  SizedBox(width: 16.w),
-                  Text(
-                    '$quantity',
-                    style: context.boldText.copyWith(fontSize: 16.sp, color: const Color(0xFF61B80C)),
-                  ),
-                  SizedBox(width: 16.w),
-                  InkWell(
-                    onTap: onIncrement,
-                    child: Icon(Icons.add, color: const Color(0xFF61B80C), size: 20.sp),
-                  ),
-                ],
-              ),
+            CounterWidget(
+              onDecrement: onDecrement,
+              quantity: quantity,
+              onIncrement: onIncrement,
             ),
           ],
         ),
       ],
+    );
+  }
+}
+
+class CounterWidget extends StatelessWidget {
+  const CounterWidget({
+    super.key,
+    required this.onDecrement,
+    required this.quantity,
+    required this.onIncrement,
+  });
+
+  final VoidCallback onDecrement;
+  final int quantity;
+  final VoidCallback onIncrement;
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      padding: EdgeInsets.all(3),
+      decoration: BoxDecoration(
+        color: const Color(0xFF61B80C).withValues(alpha: 0.1),
+        borderRadius: BorderRadius.circular(8.r),
+      ),
+      child: Row(
+        children: [
+          InkWell(
+            onTap: onDecrement,
+            child: Container(
+              padding: EdgeInsets.all(2.r),
+              decoration: BoxDecoration(
+                color: Colors.white,
+                borderRadius: BorderRadius.circular(8.r),
+              ),
+              child: Icon(
+                Icons.remove,
+                color: const Color(0xFF61B80C),
+                size: 25.sp,
+              ),
+            ),
+          ),
+          SizedBox(width: 16.w),
+          Text(
+            '$quantity',
+            style: context.boldText.copyWith(
+              fontSize: 16.sp,
+              color: const Color(0xFF61B80C),
+            ),
+          ),
+          SizedBox(width: 16.w),
+          InkWell(
+            onTap: onIncrement,
+            child: Container(
+              padding: EdgeInsets.all(2.r),
+              decoration: BoxDecoration(
+                color: Colors.white,
+                borderRadius: BorderRadius.circular(8.r),
+              ),
+              child: Icon(
+                Icons.add,
+                color: const Color(0xFF61B80C),
+                size: 25.sp,
+              ),
+            ),
+          ),
+        ],
+      ),
     );
   }
 }

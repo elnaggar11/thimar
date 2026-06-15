@@ -14,7 +14,7 @@ import '../utils/enums.dart';
 import '../utils/logger.dart';
 
 class ServerGate {
-  String? _baseUrl = 'https://doctor-in.sharqawi.aait-d.com/api';
+  String? _baseUrl = 'https://thimar.amr.aait-d.com/public/api';
 
   Map<String, dynamic> get constHeader => {
     // if (UserModel.i.token.isNotEmpty)

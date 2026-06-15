@@ -5,6 +5,9 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:thimar/core/services/service_locator.dart';
 import 'package:thimar/feature/profile/cubit/profile_cubit.dart';
+import 'package:thimar/feature/profile/widgets/change_language_sheet.dart';
+import 'package:thimar/core/routes/app_routes_fun.dart';
+import 'package:thimar/core/routes/routes.dart';
 import 'package:thimar/feature/profile/widgets/profile_header.dart';
 import 'package:thimar/feature/profile/widgets/profile_item.dart';
 import 'package:thimar/gen/assets.gen.dart';
@@ -54,7 +57,9 @@ class ProfileView extends StatelessWidget {
       _ProfileItemData(
         title: LocaleKeys.faqs.tr(),
         icon: Assets.icons.question,
-        onTap: () {},
+        onTap: () {
+          push(NamedRoutes.faqs);
+        },
       ),
       _ProfileItemData(
         title: LocaleKeys.privacyPolicy.tr(),
@@ -87,7 +92,12 @@ class ProfileView extends StatelessWidget {
       _ProfileItemData(
         title: LocaleKeys.changeLanguage.tr(),
         icon: Assets.icons.language,
-        onTap: () {},
+        onTap: () {
+          showModalBottomSheet(
+            context: context,
+            builder: (context) => const ChangeLanguageSheet(),
+          );
+        },
       ),
       _ProfileItemData(
         title: LocaleKeys.termsAndConditions.tr(),

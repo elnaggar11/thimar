@@ -1,5 +1,3 @@
-import 'dart:io';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:thimar/core/utils/extensions.dart';
@@ -36,6 +34,7 @@ class MainAppBar extends StatelessWidget implements PreferredSizeWidget {
   @override
   Widget build(BuildContext context) => AppBar(
     automaticallyImplyLeading: !removeLeading,
+    leadingWidth: removeLeading ? null : 56.w,
     toolbarHeight: toolbarHeight ?? (widget != null ? null : kToolbarHeight),
     title:
         widget ??
@@ -46,18 +45,24 @@ class MainAppBar extends StatelessWidget implements PreferredSizeWidget {
     leading:
         leading ??
         (!removeLeading
-            ? IconButton(
-                style: IconButton.styleFrom(
-                  backgroundColor: context.borderColor,
-                  padding: EdgeInsets.all(8.r),
-                ),
-                onPressed: onLeadingTap ?? pushBack,
-                icon: Icon(
-                  Platform.isAndroid
-                      ? Icons.arrow_back
-                      : Icons.arrow_back_ios_rounded,
-                  size: 22.r,
-                  color: context.primaryColorDark,
+            ? Center(
+                child: InkWell(
+                  onTap: onLeadingTap ?? pushBack,
+                  borderRadius: BorderRadius.circular(8.r),
+                  child: Container(
+                    width: 35.r,
+                    height: 35.r,
+                    padding: EdgeInsets.all(6.r),
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(8.r),
+                      color: context.primaryColor.withValues(alpha: 0.2),
+                    ),
+                    child: Icon(
+                      Icons.arrow_back_ios_rounded,
+                      size: 20.r,
+                      color: context.primaryColor,
+                    ),
+                  ),
                 ),
               )
             : null),

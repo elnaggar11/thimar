@@ -25,16 +25,21 @@ class _SplashViewState extends State<SplashView> {
     return Scaffold(
       body: Stack(
         children: [
+          // Background texture - slow fade in
+          FadeIn(
+            duration: const Duration(milliseconds: 1800),
+            child: CustomImage(
+              Assets.images.splashBackground.path,
+              width: double.infinity,
+              height: double.infinity,
+              fit: BoxFit.cover,
+            ),
+          ),
+
           // Background leaves decoration - slow slide and fade in from left
           FadeInLeft(
             duration: const Duration(milliseconds: 2000),
             child: CustomImage(Assets.icons.splashLogo),
-          ),
-          
-          // Background texture - slow fade in
-          FadeIn(
-            duration: const Duration(milliseconds: 1800),
-            child: CustomImage(Assets.images.splashBackground.path),
           ),
 
           // Main Center Logo - slow, smooth ZoomIn with delay

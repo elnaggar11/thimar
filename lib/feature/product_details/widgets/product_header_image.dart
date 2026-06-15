@@ -1,14 +1,21 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:thimar/core/utils/extensions.dart';
 import 'package:thimar/core/widgets/custom_image.dart';
 import 'package:thimar/models/product_model.dart';
 
-class ProductHeaderImage extends StatelessWidget {
+class ProductHeaderImage extends StatefulWidget {
   final ProductModel product;
 
   const ProductHeaderImage({super.key, required this.product});
 
+  @override
+  State<ProductHeaderImage> createState() => _ProductHeaderImageState();
+}
+
+class _ProductHeaderImageState extends State<ProductHeaderImage> {
+  int current = 0;
   @override
   Widget build(BuildContext context) {
     return Stack(
@@ -23,7 +30,7 @@ class ProductHeaderImage extends StatelessWidget {
               items: List.generate(
                 3,
                 (index) => CustomImage(
-                  product.banner,
+                  widget.product.banner,
                   fit: BoxFit.cover,
                   borderRadius: BorderRadius.only(
                     bottomLeft: Radius.circular(8),
@@ -32,6 +39,11 @@ class ProductHeaderImage extends StatelessWidget {
                 ),
               ),
               options: CarouselOptions(
+                onPageChanged: (index, reason) {
+                  setState(() {
+                    current = index;
+                  });
+                },
                 aspectRatio: 16 / 9,
                 autoPlay: true,
                 enlargeCenterPage: true,
@@ -69,13 +81,13 @@ class ProductHeaderImage extends StatelessWidget {
             children: List.generate(5, (index) {
               return Container(
                 margin: EdgeInsets.symmetric(horizontal: 4.w),
-                width: 8.w,
+                width: index == current ? 20.w : 8.w,
                 height: 8.w,
                 decoration: BoxDecoration(
-                  shape: BoxShape.circle,
-                  color: index == 2
-                      ? Colors.black
-                      : Colors.black.withValues(alpha: 0.5),
+                  borderRadius: BorderRadius.circular(8.r),
+                  color: index == current
+                      ? context.primaryColor
+                      : context.primaryColor.withValues(alpha: 0.2),
                 ),
               );
             }),

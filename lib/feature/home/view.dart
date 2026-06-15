@@ -140,7 +140,10 @@ class _HomeViewState extends State<HomeView> {
                             return FadeInUp(
                               duration: const Duration(milliseconds: 500),
                               delay: Duration(milliseconds: 50 * delayIndex),
-                              child: ProductItem(product: product),
+                              child: ProductItem(
+                                product: product,
+                                isdetails: false,
+                              ),
                             );
                           },
                         ),

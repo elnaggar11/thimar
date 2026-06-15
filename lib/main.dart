@@ -13,9 +13,12 @@ import 'package:thimar/core/services/service_locator.dart';
 import 'package:thimar/core/utils/app_theme.dart';
 import 'package:thimar/core/utils/phoenix.dart';
 import 'package:thimar/core/utils/unfocus.dart';
+import 'package:thimar/models/user_model.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
+  prefs = await SharedPreferences.getInstance();
+  UserModel.i.get();
   ServicesLocator().init();
   await EasyLocalization.ensureInitialized();
   await ScreenUtil.ensureScreenSize();

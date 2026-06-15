@@ -12,8 +12,9 @@ import 'package:thimar/gen/locale_keys.g.dart';
 import 'package:thimar/models/product_model.dart';
 
 class ProductItem extends StatelessWidget {
-  const ProductItem({super.key, required this.product});
+  const ProductItem({super.key, required this.product, this.isdetails = true});
   final ProductModel product;
+  final bool isdetails;
 
   @override
   Widget build(BuildContext context) {
@@ -115,18 +116,19 @@ class ProductItem extends StatelessWidget {
                   ),
                 ),
                 SizedBox(height: 8.h),
-                Padding(
-                  padding: EdgeInsets.symmetric(horizontal: 24.w),
-                  child: CustomButton(
-                    backgroundColor: Color(0xFF61B80C),
-                    height: 35.h,
-                    title: LocaleKeys.addToCart.tr(),
-                    onTap: () {},
-                    textColor: Colors.white,
-                    fontSize: 12.sp,
-                    borderRadius: BorderRadius.circular(8.r),
+                if (!isdetails)
+                  Padding(
+                    padding: EdgeInsets.symmetric(horizontal: 24.w),
+                    child: CustomButton(
+                      backgroundColor: Color(0xFF61B80C),
+                      height: 35.h,
+                      title: LocaleKeys.addToCart.tr(),
+                      onTap: () {},
+                      textColor: Colors.white,
+                      fontSize: 12.sp,
+                      borderRadius: BorderRadius.circular(8.r),
+                    ),
                   ),
-                ),
                 SizedBox(height: 8.h),
               ],
             ),

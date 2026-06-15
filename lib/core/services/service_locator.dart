@@ -3,15 +3,18 @@ import 'package:thimar/core/services/location_service.dart';
 import 'package:thimar/feature/auth/forget_password/cubit/forget_password_cubit.dart';
 import 'package:thimar/feature/auth/login/cubit/login_cubit.dart';
 import 'package:thimar/feature/auth/sign_up/cubit/sign_up_cubit.dart';
+import 'package:thimar/feature/auth/verify/cubit/verify_cubit.dart';
 import 'package:thimar/feature/layout/cubit/layout_cubit.dart';
 import 'package:thimar/feature/splash/cubit/splash_cubit.dart';
 import 'package:thimar/feature/orders/cubit/orders_cubit.dart';
 import 'package:thimar/feature/favorites/cubit/favorites_cubit.dart';
 import 'package:thimar/feature/profile/cubit/profile_cubit.dart';
 import 'package:thimar/feature/notifications/cubit/notifications_cubit.dart';
+import 'package:thimar/feature/auth/reset_password/cubit/reset_password_cubit.dart';
 
 import 'package:thimar/feature/home/cubit/home_cubit.dart';
 import 'package:thimar/feature/product_details/cubit/product_details_cubit.dart';
+import 'package:thimar/feature/faqs/cubit/faqs_cubit.dart';
 
 final sl = GetIt.instance;
 
@@ -29,5 +32,8 @@ class ServicesLocator {
     sl.registerFactory(() => ProfileCubit());
     sl.registerFactory(() => NotificationsCubit());
     sl.registerFactory(() => ProductDetailsCubit());
+    sl.registerFactory(() => FaqsCubit());
+    sl.registerFactory(() => VerifyCubit());
+    sl.registerFactory(() => ResetPasswordCubit());
   }
 }
