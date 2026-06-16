@@ -369,5 +369,6 @@
   "activateAccount": "تفعيل الحساب",
   "name": "الإسم",
   "subject": "الموضوع",
-  "send": "إرسال"
+  "send": "إرسال",
+  "updateData": "تعديل البيانات"
 }

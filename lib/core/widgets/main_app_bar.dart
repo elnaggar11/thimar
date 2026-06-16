@@ -40,7 +40,10 @@ class MainAppBar extends StatelessWidget implements PreferredSizeWidget {
         widget ??
         Text(
           title ?? '',
-          style: context.semiboldText.copyWith(fontSize: 22, color: titleColor),
+          style: context.semiboldText.copyWith(
+            fontSize: 18,
+            color: context.primaryColor,
+          ),
         ),
     leading:
         leading ??

@@ -12,4 +12,8 @@ class APIconst {
   static const faqs = 'faqs';
   static const contact = 'contact';
   static const about = 'about';
+  static const editProfile = 'client/profile';
+  static const logout = 'logout';
+  static const policy = 'policy';
+  static const terms = 'terms';
 }

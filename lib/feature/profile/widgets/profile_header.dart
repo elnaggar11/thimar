@@ -5,6 +5,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:thimar/core/utils/extensions.dart';
 import 'package:thimar/core/widgets/custom_image.dart';
 import 'package:thimar/gen/locale_keys.g.dart';
+import 'package:thimar/models/user_model.dart';
 
 class ProfileHeader extends StatelessWidget {
   const ProfileHeader({super.key});
@@ -30,7 +31,7 @@ class ProfileHeader extends StatelessWidget {
               ),
             ),
           ),
-          SizedBox(height: 24.h),
+          24.verticalSpace,
           ZoomIn(
             duration: const Duration(milliseconds: 600),
             child: Container(
@@ -42,30 +43,28 @@ class ProfileHeader extends StatelessWidget {
               ),
               child: ClipRRect(
                 borderRadius: BorderRadius.circular(18.r),
-                child: const CustomImage(
-                  'https://randomuser.me/api/portraits/men/32.jpg', // Placeholder for now
-                ),
+                child: CustomImage(UserModel.i.avatarPath, fit: BoxFit.cover),
               ),
             ),
           ),
-          SizedBox(height: 12.h),
+          12.verticalSpace,
           FadeInDown(
             duration: const Duration(milliseconds: 500),
             delay: const Duration(milliseconds: 200),
             child: Text(
-              "محمد علي", // Mock data, should come from cubit/user model
+              UserModel.i.name,
               style: context.boldText.copyWith(
                 fontSize: 16.sp,
                 color: Colors.white,
               ),
             ),
           ),
-          SizedBox(height: 4.h),
+          4.verticalSpace,
           FadeInDown(
             duration: const Duration(milliseconds: 500),
             delay: const Duration(milliseconds: 300),
             child: Text(
-              "+96654787856", // Mock data
+              "${UserModel.i.phone}+",
               style: context.regularText.copyWith(
                 fontSize: 14.sp,
                 color: Colors.white70,

@@ -406,4 +406,5 @@ abstract class LocaleKeys {
   static const name = 'name';
   static const subject = 'subject';
   static const send = 'send';
+  static const updateData = 'updateData';
 }

@@ -1,23 +1,23 @@
 part of 'profile_cubit.dart';
 
 class ProfileState {
-  final RequestState state;
+  final RequestState logoutState;
   final String message;
   final ErrorType errorType;
 
   ProfileState({
-    this.state = RequestState.initial,
+    this.logoutState = RequestState.initial,
     this.message = '',
     this.errorType = ErrorType.none,
   });
 
   ProfileState copyWith({
-    RequestState? state,
+    RequestState? logoutState,
     String? message,
     ErrorType? errorType,
   }) {
     return ProfileState(
-      state: state ?? this.state,
+      logoutState: logoutState ?? this.logoutState,
       message: message ?? this.message,
       errorType: errorType ?? this.errorType,
     );

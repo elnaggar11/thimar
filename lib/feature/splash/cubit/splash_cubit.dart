@@ -14,7 +14,10 @@ class SplashCubit extends Cubit<SplashState> {
 
   Future<void> navigateToNextScreen(BuildContext context) async {
     if (UserModel.i.isAuth) {
-      await Future.wait([Future.delayed(2.seconds), _fetchProfile()]);
+      await Future.wait([
+        Future.delayed(2.seconds),
+        _fetchProfile().timeout(5.seconds, onTimeout: () {}),
+      ]);
       pushAndRemoveUntil(NamedRoutes.layout);
     } else {
       await Future.delayed(2.seconds);

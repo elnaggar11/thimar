@@ -8,6 +8,7 @@ import 'package:thimar/feature/profile/cubit/profile_cubit.dart';
 import 'package:thimar/feature/profile/widgets/change_language_sheet.dart';
 import 'package:thimar/core/routes/app_routes_fun.dart';
 import 'package:thimar/core/routes/routes.dart';
+import 'package:thimar/feature/profile/widgets/logout_sheet.dart';
 import 'package:thimar/feature/profile/widgets/profile_header.dart';
 import 'package:thimar/feature/profile/widgets/profile_item.dart';
 import 'package:thimar/gen/assets.gen.dart';
@@ -34,7 +35,9 @@ class ProfileView extends StatelessWidget {
       _ProfileItemData(
         title: LocaleKeys.personalInfo.tr(),
         icon: Assets.icons.duotoneUser,
-        onTap: () {},
+        onTap: () {
+          push(NamedRoutes.personalInfo);
+        },
       ),
       _ProfileItemData(
         title: LocaleKeys.wallet.tr(),
@@ -64,7 +67,9 @@ class ProfileView extends StatelessWidget {
       _ProfileItemData(
         title: LocaleKeys.privacyPolicy.tr(),
         icon: Assets.icons.shield,
-        onTap: () {},
+        onTap: () {
+          push(NamedRoutes.privacyPolicy);
+        },
       ),
       _ProfileItemData(
         title: LocaleKeys.contactUs.tr(),
@@ -106,7 +111,9 @@ class ProfileView extends StatelessWidget {
       _ProfileItemData(
         title: LocaleKeys.termsAndConditions.tr(),
         icon: Assets.icons.note2,
-        onTap: () {},
+        onTap: () {
+          push(NamedRoutes.termsAndConditions);
+        },
       ),
       _ProfileItemData(
         title: LocaleKeys.rateApp.tr(),
@@ -129,8 +136,10 @@ class ProfileView extends StatelessWidget {
       );
     }
 
+    final cubit = sl<ProfileCubit>();
+
     return BlocProvider(
-      create: (context) => sl<ProfileCubit>(),
+      create: (context) => cubit,
       child: Scaffold(
         body: SingleChildScrollView(
           child: Column(
@@ -192,7 +201,16 @@ class ProfileView extends StatelessWidget {
                           title: LocaleKeys.logout.tr(),
                           iconPath: Assets.icons.turnOff,
                           hasTrailing: true,
-                          onTap: () {},
+                          onTap: () {
+                            showModalBottomSheet(
+                              context: context,
+                              backgroundColor: Colors.transparent,
+                              builder: (sheetContext) => BlocProvider.value(
+                                value: cubit,
+                                child: LogoutSheet(cubit: cubit),
+                              ),
+                            );
+                          },
                         ),
                       ),
                     ),

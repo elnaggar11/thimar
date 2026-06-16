@@ -22,7 +22,7 @@ class UserModel extends Model {
   fromJson([Map<String, dynamic>? json]) {
     final data = json ?? {};
     id = stringFromJson(data, "id");
-    name = stringFromJson(data, "name");
+    name = stringFromJson(data, "fullname");
     phoneCode = stringFromJson(data, "phone_code");
     birthday = stringFromJson(data, "birthday");
     phone = stringFromJson(data, "phone");
@@ -33,7 +33,7 @@ class UserModel extends Model {
     isNotify = boolFromJson(data, "is_notify");
     canUseDeferredInvoice = boolFromJson(data, "can_use_deferred_invoice");
     balance = numFromJson(data, "balance");
-    avatarPath = stringFromJson(data['avatar'], "path");
+    avatarPath = stringFromJson(data, "image");
     token = stringFromJson(data, "token");
     country = data['country'] == null
         ? null
@@ -56,7 +56,7 @@ class UserModel extends Model {
   @override
   Map<String, dynamic> toJson() => {
     "id": id,
-    "name": name,
+    "fullname": name,
     "phone": phone,
     "email": email,
     "user_type": userType,
@@ -65,7 +65,7 @@ class UserModel extends Model {
     "is_notify": isNotify,
     "can_use_deferred_invoice": canUseDeferredInvoice,
     "balance": balance,
-    "avatar": {"path": avatarPath},
+    "image": avatarPath,
     "token": token,
     "phone_code": phoneCode,
     "birthday": birthday,

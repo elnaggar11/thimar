@@ -369,5 +369,6 @@
   "activateAccount": "Activate Account",
   "name": "Name",
   "subject": "Subject",
-  "send": "Send"
+  "send": "Send",
+  "updateData": "Update Data"
 }

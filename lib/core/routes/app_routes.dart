@@ -9,8 +9,11 @@ import 'package:thimar/feature/auth/sign_up/view.dart';
 import 'package:thimar/feature/complaints_and_suggestions/view.dart';
 import 'package:thimar/feature/layout/view.dart';
 import 'package:thimar/feature/splash/view.dart';
+import 'package:thimar/feature/personal_info/view.dart';
 import 'package:thimar/feature/product_details/view.dart';
 import 'package:thimar/feature/faqs/view.dart';
+import 'package:thimar/feature/policy/view.dart';
+import 'package:thimar/feature/terms/view.dart';
 
 import 'routes.dart';
 
@@ -33,5 +36,8 @@ class AppRoutes {
     NamedRoutes.complaintsAndSuggestions: (c) =>
         const ComplaintsAndSuggestionsView(),
     NamedRoutes.aboutUs: (c) => const AboutView(),
+    NamedRoutes.personalInfo: (c) => const PersonalInfoView(),
+    NamedRoutes.privacyPolicy: (c) => const PolicyView(),
+    NamedRoutes.termsAndConditions: (c) => const TermsView(),
   };
 }

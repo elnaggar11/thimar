@@ -92,10 +92,8 @@ class _PickImageState extends State<PickImage> {
     try {
       final file = await ImagePicker().pickImage(source: source);
       if (file != null) {
-        final fileInfo = await _getFileInfo(file.path);
-        // final fileModel = FileModel.fromFileInfo(fileInfo);
         if (mounted) {
-          // Navigator.pop(context, fileModel);
+          Navigator.pop(context, File(file.path));
         }
       }
     } catch (e) {
@@ -110,10 +108,8 @@ class _PickImageState extends State<PickImage> {
       final result = await FilePicker.platform.pickFiles();
 
       if (result != null && result.files.single.path != null) {
-        final fileInfo = await _getFileInfo(result.files.single.path!);
-        // final fileModel = FileModel.fromFileInfo(fileInfo);
         if (mounted) {
-          // Navigator.pop(context, fileModel);
+          Navigator.pop(context, File(result.files.single.path!));
         }
       }
     } catch (e) {

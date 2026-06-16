@@ -45,6 +45,9 @@ class $AssetsIconsGen {
   /// File path: assets/icons/call.svg
   String get call => 'assets/icons/call.svg';
 
+  /// File path: assets/icons/camera.svg
+  String get camera => 'assets/icons/camera.svg';
+
   /// File path: assets/icons/city.svg
   String get city => 'assets/icons/city.svg';
 
@@ -159,6 +162,7 @@ class $AssetsIconsGen {
     bag,
     buy,
     call,
+    camera,
     city,
     duotoneUser,
     edit,

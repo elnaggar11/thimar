@@ -38,10 +38,11 @@ class NamedRoutes {
   static const professionalInfo = "/professionalInfo";
   static const aboutUs = "/aboutUs";
   static const termsAndConditions = "/termsAndConditions";
-  static const privacyPolicy = "/privacyPolicy";
+  static const privacyPolicy = "/privacy_policy";
   static const changePhone = "/changePhone";
   static const changeEmail = "/changeEmail";
   static const notification = "/notification";
   static const productDetails = "/productDetails";
   static const complaintsAndSuggestions = "/complaintsAndSuggestions";
+  static const personalInfo = "/personalInfo";
 }
