@@ -366,5 +366,8 @@
   "similarProducts": "Similar Products",
   "productDetails": "Product Details",
   "productCode": "Product Code",
-  "activateAccount": "Activate Account"
+  "activateAccount": "Activate Account",
+  "name": "Name",
+  "subject": "Subject",
+  "send": "Send"
 }

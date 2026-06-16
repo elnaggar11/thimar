@@ -8,4 +8,8 @@ class APIconst {
   static const register = 'client_register';
   static const resetPassword = 'reset_password';
   static const sliders = 'sliders';
+  static const profile = 'client/profile';
+  static const faqs = 'faqs';
+  static const contact = 'contact';
+  static const about = 'about';
 }

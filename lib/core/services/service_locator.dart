@@ -1,9 +1,11 @@
 import 'package:get_it/get_it.dart';
 import 'package:thimar/core/services/location_service.dart';
+import 'package:thimar/feature/about/cubit/about_cubit.dart';
 import 'package:thimar/feature/auth/forget_password/cubit/forget_password_cubit.dart';
 import 'package:thimar/feature/auth/login/cubit/login_cubit.dart';
 import 'package:thimar/feature/auth/sign_up/cubit/sign_up_cubit.dart';
 import 'package:thimar/feature/auth/verify/cubit/verify_cubit.dart';
+import 'package:thimar/feature/complaints_and_suggestions/cubit/complaints_and_suggestions_cubit.dart';
 import 'package:thimar/feature/layout/cubit/layout_cubit.dart';
 import 'package:thimar/feature/splash/cubit/splash_cubit.dart';
 import 'package:thimar/feature/orders/cubit/orders_cubit.dart';
@@ -33,7 +35,9 @@ class ServicesLocator {
     sl.registerFactory(() => NotificationsCubit());
     sl.registerFactory(() => ProductDetailsCubit());
     sl.registerFactory(() => FaqsCubit());
+    sl.registerFactory(() => ComplaintsAndSuggestionsCubit());
     sl.registerFactory(() => VerifyCubit());
     sl.registerFactory(() => ResetPasswordCubit());
+    sl.registerFactory(() => AboutCubit());
   }
 }

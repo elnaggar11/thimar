@@ -12,15 +12,16 @@ import 'package:thimar/gen/locale_keys.g.dart';
 
 import '../utils/enums.dart';
 import '../utils/logger.dart';
+import '../../models/user_model.dart';
 
 class ServerGate {
   String? _baseUrl = 'https://thimar.amr.aait-d.com/public/api';
 
   Map<String, dynamic> get constHeader => {
-    // if (UserModel.i.token.isNotEmpty)
-    //   "Authorization": "Bearer ${UserModel.i.token}",
-    // "Accept": "application/json",
-    // "Accept-Language": LocaleKeys.lang.tr(),
+    if (UserModel.i.token.isNotEmpty)
+      "Authorization": "Bearer ${UserModel.i.token}",
+    "Accept": "application/json",
+    "Accept-Language": LocaleKeys.lang.tr(),
   };
 
   final _dio = Dio();

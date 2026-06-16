@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:thimar/core/services/server_gate.dart';
+import 'package:thimar/core/utils/app_constant.dart';
 import 'package:thimar/core/utils/enums.dart';
 import 'package:thimar/models/category_model.dart';
 import 'package:thimar/models/product_model.dart';
@@ -18,17 +20,6 @@ class HomeCubit extends Cubit<HomeState> {
     emit(state.copyWith(state: RequestState.loading));
 
     await Future.delayed(const Duration(milliseconds: 500));
-
-    final banners = [
-      SliderModel.fromJson({
-        "id": 1,
-        "image": {
-          "path":
-              'https://img.freepik.com/free-photo/healthy-vegetables-wooden-table_1150-38014.jpg',
-        },
-        "description": 'Permanent Offers',
-      }),
-    ];
 
     // Dummy Categories
     final categories = [
@@ -81,9 +72,23 @@ class HomeCubit extends Cubit<HomeState> {
         state: RequestState.done,
         categories: categories,
         products: products,
-        banners: banners,
       ),
     );
+  }
+
+  Future<void> getSliders() async {
+    emit(state.copyWith(state: RequestState.loading));
+
+    final response = await ServerGate.i.getFromServer(url: APIconst.sliders);
+
+    if (response.success) {
+      final banners = List<SliderModel>.from(
+        response.data['data'].map((x) => SliderModel.fromJson(x)),
+      );
+      emit(state.copyWith(state: RequestState.done, banners: banners));
+    } else {
+      emit(state.copyWith(state: RequestState.error, message: response.msg));
+    }
   }
 
   void changeBannerIndex(int index) {

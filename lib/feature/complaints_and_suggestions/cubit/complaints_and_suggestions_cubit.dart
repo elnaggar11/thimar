@@ -4,40 +4,52 @@ import 'package:thimar/core/services/server_gate.dart';
 import 'package:thimar/core/utils/app_constant.dart';
 import 'package:thimar/core/utils/enums.dart';
 import 'package:thimar/core/widgets/flash_helper.dart';
-import 'package:thimar/models/user_model.dart';
 
-part 'login_state.dart';
+part 'complaints_and_suggestions_state.dart';
 
-class LoginCubit extends Cubit<LoginState> {
-  LoginCubit() : super(LoginState());
+class ComplaintsAndSuggestionsCubit
+    extends Cubit<ComplaintsAndSuggestionsState> {
+  ComplaintsAndSuggestionsCubit() : super(ComplaintsAndSuggestionsState());
 
-  final phoneController = TextEditingController();
-  final passwordController = TextEditingController();
   final formKey = GlobalKey<FormState>();
+  final nameController = TextEditingController();
+  final phoneController = TextEditingController();
+  final subjectController = TextEditingController();
 
-  Future<void> login() async {
+  Future<void> sendContact() async {
     if (!formKey.currentState!.validate()) {
       return;
     }
     emit(state.copyWith(state: RequestState.loading));
+
     final resp = await ServerGate.i.sendToServer(
-      url: APIconst.login,
+      url: APIconst.contact,
       body: {
+        "fullname": nameController.text,
         "phone": phoneController.text,
-        "password": passwordController.text,
-        "device_token": "test",
-        "type": "ios",
-        "user_type": "client",
+        "content": subjectController.text,
       },
     );
+
     if (resp.success) {
-      UserModel.i.fromJson(resp.data['data']);
-      UserModel.i.save();
       FlashHelper.showToast(resp.msg, type: MessageType.success);
       emit(state.copyWith(state: RequestState.done));
+
+      // Clear fields after success
+      nameController.clear();
+      phoneController.clear();
+      subjectController.clear();
     } else {
       FlashHelper.showToast(resp.msg, type: MessageType.fail);
       emit(state.copyWith(state: RequestState.error));
     }
+  }
+
+  @override
+  Future<void> close() {
+    nameController.dispose();
+    phoneController.dispose();
+    subjectController.dispose();
+    return super.close();
   }
 }

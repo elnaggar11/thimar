@@ -43,4 +43,5 @@ class NamedRoutes {
   static const changeEmail = "/changeEmail";
   static const notification = "/notification";
   static const productDetails = "/productDetails";
+  static const complaintsAndSuggestions = "/complaintsAndSuggestions";
 }

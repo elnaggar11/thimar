@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:animate_do/animate_do.dart';
+import 'package:thimar/core/services/service_locator.dart';
 import 'package:thimar/core/widgets/custom_image.dart';
 import 'package:thimar/gen/assets.gen.dart';
 import 'package:thimar/feature/splash/cubit/splash_cubit.dart';
@@ -14,10 +14,11 @@ class SplashView extends StatefulWidget {
 }
 
 class _SplashViewState extends State<SplashView> {
+  final cubit = sl<SplashCubit>();
   @override
   void initState() {
     super.initState();
-    context.read<SplashCubit>().navigateToNextScreen(context);
+    cubit.navigateToNextScreen(context);
   }
 
   @override

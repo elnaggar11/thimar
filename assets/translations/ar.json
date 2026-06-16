@@ -366,5 +366,8 @@
   "similarProducts": "منتجات مشابهة",
   "productDetails": "تفاصيل المنتج",
   "productCode": "كود المنتج",
-  "activateAccount": "تفعيل الحساب"
+  "activateAccount": "تفعيل الحساب",
+  "name": "الإسم",
+  "subject": "الموضوع",
+  "send": "إرسال"
 }

@@ -403,4 +403,7 @@ abstract class LocaleKeys {
   static const productCode = 'productCode';
   static const similarProducts = 'similarProducts';
   static const activateAccount = 'activateAccount';
+  static const name = 'name';
+  static const subject = 'subject';
+  static const send = 'send';
 }

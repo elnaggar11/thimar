@@ -6,7 +6,7 @@ class SliderModel extends Model {
 
   SliderModel.fromJson([Map<String, dynamic>? json]) {
     id = stringFromJson(json, "id");
-    image = stringFromJson(json?['image'], "path");
+    image = stringFromJson(json, "media");
     title = stringFromJson(json, "title");
     description = stringFromJson(json, "description");
   }

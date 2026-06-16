@@ -74,7 +74,9 @@ class ProfileView extends StatelessWidget {
       _ProfileItemData(
         title: LocaleKeys.complaintsAndSuggestions.tr(),
         icon: Assets.icons.edit,
-        onTap: () {},
+        onTap: () {
+          push(NamedRoutes.complaintsAndSuggestions);
+        },
       ),
       _ProfileItemData(
         title: LocaleKeys.shareApp.tr(),
@@ -87,7 +89,9 @@ class ProfileView extends StatelessWidget {
       _ProfileItemData(
         title: LocaleKeys.aboutApp.tr(),
         icon: Assets.icons.info2,
-        onTap: () {},
+        onTap: () {
+          push(NamedRoutes.aboutUs);
+        },
       ),
       _ProfileItemData(
         title: LocaleKeys.changeLanguage.tr(),
