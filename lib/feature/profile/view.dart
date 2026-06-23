@@ -74,7 +74,9 @@ class ProfileView extends StatelessWidget {
       _ProfileItemData(
         title: LocaleKeys.contactUs.tr(),
         icon: Assets.icons.call,
-        onTap: () {},
+        onTap: () {
+          push(NamedRoutes.contactUs);
+        },
       ),
       _ProfileItemData(
         title: LocaleKeys.complaintsAndSuggestions.tr(),

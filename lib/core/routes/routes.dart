@@ -45,4 +45,5 @@ class NamedRoutes {
   static const productDetails = "/productDetails";
   static const complaintsAndSuggestions = "/complaintsAndSuggestions";
   static const personalInfo = "/personalInfo";
+  static const cart = "/cart";
 }

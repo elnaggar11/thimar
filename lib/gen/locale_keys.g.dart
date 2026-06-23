@@ -407,4 +407,10 @@ abstract class LocaleKeys {
   static const subject = 'subject';
   static const send = 'send';
   static const updateData = 'updateData';
+  static const cart = 'cart';
+  static const haveCoupon = 'haveCoupon';
+  static const pricesIncludeVat = 'pricesIncludeVat';
+  static const productsTotal = 'productsTotal';
+  static const discount = 'discount';
+  static const goToCheckout = 'goToCheckout';
 }

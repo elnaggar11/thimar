@@ -7,7 +7,14 @@ class CategoryModel extends Model {
   CategoryModel.fromJson([Map<String, dynamic>? json]) {
     id = stringFromJson(json, "id");
     name = stringFromJson(json, "name");
-    image = stringFromJson(json?['image'], "path");
+    
+    if (json?['media'] != null && json?['media'] is String) {
+      image = json!['media'];
+    } else if (json?['image'] != null && json?['image'] is String) {
+      image = json!['image'];
+    } else {
+      image = stringFromJson(json?['image'], "path");
+    }
   }
 
   @override

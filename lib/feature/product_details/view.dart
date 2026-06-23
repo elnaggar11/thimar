@@ -152,7 +152,7 @@ class _ProductDetailsViewState extends State<ProductDetailsView> {
                       FadeInUp(
                         duration: const Duration(milliseconds: 450),
                         delay: const Duration(milliseconds: 400),
-                        child: const ProductReviews(),
+                        child: ProductReviews(reviews: state.reviews),
                       ),
                       SizedBox(height: 16.h),
                       FadeInUp(

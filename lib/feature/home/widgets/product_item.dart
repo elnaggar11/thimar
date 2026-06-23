@@ -10,17 +10,53 @@ import 'package:thimar/core/widgets/app_btn.dart';
 import 'package:thimar/core/widgets/custom_image.dart';
 import 'package:thimar/gen/locale_keys.g.dart';
 import 'package:thimar/models/product_model.dart';
+import 'package:thimar/core/services/service_locator.dart';
+import 'package:thimar/feature/favorites/cubit/favorites_cubit.dart';
 
-class ProductItem extends StatelessWidget {
+class ProductItem extends StatefulWidget {
   const ProductItem({super.key, required this.product, this.isdetails = true});
   final ProductModel product;
   final bool isdetails;
 
   @override
+  State<ProductItem> createState() => _ProductItemState();
+}
+
+class _ProductItemState extends State<ProductItem> {
+  bool isFavorite = false;
+
+  @override
+  void initState() {
+    super.initState();
+    isFavorite = widget.product.isFavorite;
+  }
+
+  void _toggleFavorite() async {
+    // Optimistic local update
+    setState(() {
+      isFavorite = !isFavorite;
+      widget.product.isFavorite = isFavorite;
+    });
+
+    // Call the Cubit which handles the API request
+    final success = await sl<FavoritesCubit>().toggleFavorite(
+      product: widget.product,
+    );
+
+    if (!success) {
+      // Revert if API failed
+      setState(() {
+        isFavorite = !isFavorite;
+        widget.product.isFavorite = isFavorite;
+      });
+    }
+  }
+
+  @override
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
-        push(NamedRoutes.productDetails, arg: {'product': product});
+        push(NamedRoutes.productDetails, arg: {'product': widget.product});
       },
       child: Container(
         decoration: BoxDecoration(
@@ -43,7 +79,10 @@ class ProductItem extends StatelessWidget {
                   child: Center(
                     child: ClipRRect(
                       borderRadius: BorderRadius.circular(12.r),
-                      child: CustomImage(product.banner, fit: BoxFit.cover),
+                      child: CustomImage(
+                        widget.product.banner,
+                        fit: BoxFit.cover,
+                      ),
                     ),
                   ),
                 ),
@@ -53,7 +92,7 @@ class ProductItem extends StatelessWidget {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text(
-                        product.name,
+                        widget.product.name,
                         style: context.boldText.copyWith(
                           fontSize: 14.sp,
                           color: context.primaryColor,
@@ -73,7 +112,7 @@ class ProductItem extends StatelessWidget {
                             crossAxisAlignment: CrossAxisAlignment.end,
                             children: [
                               Text(
-                                '${product.priceAfterDiscount}',
+                                '${widget.product.priceAfterDiscount}',
                                 style: context.boldText.copyWith(
                                   fontSize: 14.sp,
                                   color: context.primaryColor,
@@ -89,7 +128,7 @@ class ProductItem extends StatelessWidget {
                               ),
                               SizedBox(width: 4.w),
                               Text(
-                                '${product.price} ${LocaleKeys.sar.tr()}',
+                                '${widget.product.price} ${LocaleKeys.sar.tr()}',
                                 style: context.regularText.copyWith(
                                   fontSize: 10.sp,
                                   color: context.hintColor,
@@ -116,7 +155,7 @@ class ProductItem extends StatelessWidget {
                   ),
                 ),
                 SizedBox(height: 8.h),
-                if (!isdetails)
+                if (!widget.isdetails)
                   Padding(
                     padding: EdgeInsets.symmetric(horizontal: 24.w),
                     child: CustomButton(
@@ -146,10 +185,30 @@ class ProductItem extends StatelessWidget {
                   ),
                 ),
                 child: Text(
-                  "-${product.discount.toInt()}%",
+                  "-${widget.product.discount.toInt()}%",
                   style: context.boldText.copyWith(
                     color: Colors.white,
                     fontSize: 12.sp,
+                  ),
+                ),
+              ),
+            ),
+            Positioned.directional(
+              textDirection: Directionality.of(context),
+              top: 8.h,
+              start: 8.w,
+              child: GestureDetector(
+                onTap: _toggleFavorite,
+                child: Container(
+                  padding: EdgeInsets.all(4.r),
+                  decoration: BoxDecoration(
+                    color: context.primaryColor.withValues(alpha: 0.2),
+                    shape: BoxShape.circle,
+                  ),
+                  child: Icon(
+                    isFavorite ? Icons.favorite : Icons.favorite_border,
+                    color: isFavorite ? Colors.red : Colors.grey,
+                    size: 20.sp,
                   ),
                 ),
               ),

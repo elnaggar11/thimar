@@ -370,5 +370,11 @@
   "name": "Name",
   "subject": "Subject",
   "send": "Send",
-  "updateData": "Update Data"
+  "updateData": "Update Data",
+  "cart": "Cart",
+  "haveCoupon": "Have a coupon? Enter coupon code",
+  "pricesIncludeVat": "All prices include 15% VAT",
+  "productsTotal": "Products Total",
+  "discount": "Discount",
+  "goToCheckout": "Go To Checkout"
 }

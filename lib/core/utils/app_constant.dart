@@ -16,4 +16,14 @@ class APIconst {
   static const logout = 'logout';
   static const policy = 'policy';
   static const terms = 'terms';
+  static const categories = 'categories';
+  static const getFavorites = 'client/products/favorites';
+  static String addToFavorite(String id) => 'client/products/$id/add_to_favorite';
+  static String removeFromFavorite(String id) => 'client/products/$id/remove_from_favorite';
+  
+  static const products = 'products';
+  static String productDetails(String id) => 'products/$id';
+  static String productRates(String id) => 'products/$id/rates';
+  static String categoryProducts(String id) => 'categories/$id';
+  static const cart = 'client/cart';
 }

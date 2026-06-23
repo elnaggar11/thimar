@@ -17,9 +17,11 @@ import 'package:thimar/feature/auth/reset_password/cubit/reset_password_cubit.da
 
 import 'package:thimar/feature/home/cubit/home_cubit.dart';
 import 'package:thimar/feature/product_details/cubit/product_details_cubit.dart';
+import 'package:thimar/feature/contact_us/cubit/contact_us_cubit.dart';
 import 'package:thimar/feature/faqs/cubit/faqs_cubit.dart';
 import 'package:thimar/feature/policy/cubit/policy_cubit.dart';
 import 'package:thimar/feature/terms/cubit/terms_cubit.dart';
+import 'package:thimar/feature/cart/cubit/cart_cubit.dart';
 
 final sl = GetIt.instance;
 
@@ -33,7 +35,7 @@ class ServicesLocator {
     sl.registerFactory(() => LayoutCubit());
     sl.registerFactory(() => HomeCubit());
     sl.registerFactory(() => OrdersCubit());
-    sl.registerFactory(() => FavoritesCubit());
+    sl.registerLazySingleton(() => FavoritesCubit());
     sl.registerFactory(() => ProfileCubit());
     sl.registerFactory(() => NotificationsCubit());
     sl.registerFactory(() => ProductDetailsCubit());
@@ -45,5 +47,7 @@ class ServicesLocator {
     sl.registerFactory(() => PersonalInfoCubit());
     sl.registerFactory(() => PolicyCubit());
     sl.registerFactory(() => TermsCubit());
+    sl.registerFactory(() => ContactUsCubit());
+    sl.registerFactory(() => CartCubit());
   }
 }

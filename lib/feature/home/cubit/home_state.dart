@@ -11,6 +11,8 @@ class HomeState {
   final List<SliderModel> banners;
   final int currentBannerIndex;
 
+  final int? selectedCategoryId;
+
   HomeState({
     this.state = RequestState.initial,
     this.message = '',
@@ -18,6 +20,7 @@ class HomeState {
     this.products = const [],
     this.banners = const [],
     this.currentBannerIndex = 0,
+    this.selectedCategoryId,
   });
 
   HomeState copyWith({
@@ -27,6 +30,7 @@ class HomeState {
     List<ProductModel>? products,
     List<SliderModel>? banners,
     int? currentBannerIndex,
+    int? selectedCategoryId,
   }) {
     return HomeState(
       state: state ?? this.state,
@@ -35,6 +39,7 @@ class HomeState {
       products: products ?? this.products,
       banners: banners ?? this.banners,
       currentBannerIndex: currentBannerIndex ?? this.currentBannerIndex,
+      selectedCategoryId: selectedCategoryId ?? this.selectedCategoryId,
     );
   }
 }

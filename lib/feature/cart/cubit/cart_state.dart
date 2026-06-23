@@ -1,26 +1,26 @@
 import 'package:thimar/core/utils/enums.dart';
-import 'package:thimar/models/product_model.dart';
+import 'package:thimar/models/cart_model.dart';
 
-class FavoritesState {
+class CartState {
   final RequestState state;
   final String message;
-  final List<ProductModel> favorites;
+  final CartModel? cartData;
 
-  FavoritesState({
+  CartState({
     this.state = RequestState.initial,
     this.message = '',
-    this.favorites = const [],
+    this.cartData,
   });
 
-  FavoritesState copyWith({
+  CartState copyWith({
     RequestState? state,
     String? message,
-    List<ProductModel>? favorites,
+    CartModel? cartData,
   }) {
-    return FavoritesState(
+    return CartState(
       state: state ?? this.state,
       message: message ?? this.message,
-      favorites: favorites ?? this.favorites,
+      cartData: cartData ?? this.cartData,
     );
   }
 }

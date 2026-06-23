@@ -41,7 +41,7 @@ class _AboutViewState extends State<AboutView> {
         bloc: cubit,
         builder: (context, state) {
           if (state.state.isLoading) {
-            return Center(child: CustomProgress(size: 30.h));
+            return Center(child: CustomProgress());
           } else if (state.state.isError) {
             return Center(
               child: Text(

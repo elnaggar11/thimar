@@ -14,30 +14,41 @@ class ProductModel extends Model {
   late bool isFavorite;
 
   ProductModel.fromJson(Map<String, dynamic> json) {
-    final mainImage = json["main"] as Map<String, dynamic>?;
-    final brand = json["brand"] as Map<String, dynamic>?;
-    final logoValue = json["logo"];
-    final bannerValue = json["banner"];
-
     id = stringFromJson(json, "id");
-    name = stringFromJson(json, "name");
+    name = stringFromJson(json, "title");
+    if (name.isEmpty) {
+      name = stringFromJson(json, "name"); // Fallback
+    }
     description = stringFromJson(json, "description");
-    logo = mainImage != null
-        ? stringFromJson(mainImage, "path")
-        : logoValue is Map<String, dynamic>
-        ? stringFromJson(logoValue, "path")
-        : (logoValue?.toString() ?? '');
-    banner = mainImage != null
-        ? stringFromJson(mainImage, "path")
-        : bannerValue is Map<String, dynamic>
-        ? stringFromJson(bannerValue, "path")
-        : (bannerValue?.toString() ?? logo);
-    brandName = stringFromJson(brand, "name");
+    
+    // API returns main_image as string
+    logo = stringFromJson(json, "main_image");
+    banner = stringFromJson(json, "main_image");
+    
+    // In case the API still uses the old format somewhere, we can keep fallbacks
+    if (logo.isEmpty) {
+      final mainImageObj = json["main"] as Map<String, dynamic>?;
+      if (mainImageObj != null) {
+        logo = stringFromJson(mainImageObj, "path");
+        banner = logo;
+      }
+    }
+
+    brandName = ""; // Not in this API
     rate = doubleFromJson(json, "rate");
-    price = doubleFromJson(json, "price");
-    availableQuantity = doubleFromJson(json, "available_quantity");
-    priceAfterDiscount = doubleFromJson(json, "price_after_discount");
+    
+    // price_before_discount in API is the original price
+    price = doubleFromJson(json, "price_before_discount");
+    if (price == 0) price = doubleFromJson(json, "price"); // Fallback
+    
+    // price in API is the price AFTER discount
+    priceAfterDiscount = doubleFromJson(json, "price");
+    
+    availableQuantity = doubleFromJson(json, "amount");
     discount = doubleFromJson(json, "discount");
+    if (discount > 0 && discount <= 1) {
+      discount = discount * 100;
+    }
     isFavorite = boolFromJson(json, "is_favorite");
   }
 

@@ -2,13 +2,18 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:thimar/core/utils/extensions.dart';
+import 'package:thimar/core/widgets/custom_image.dart';
 import 'package:thimar/gen/locale_keys.g.dart';
+import 'package:thimar/models/review_model.dart';
 
 class ProductReviews extends StatelessWidget {
-  const ProductReviews({super.key});
+  final List<ReviewModel> reviews;
+  const ProductReviews({super.key, required this.reviews});
 
   @override
   Widget build(BuildContext context) {
+    if (reviews.isEmpty) return const SizedBox.shrink();
+
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
@@ -36,8 +41,9 @@ class ProductReviews extends StatelessWidget {
           height: 90.h,
           child: ListView.builder(
             scrollDirection: Axis.horizontal,
-            itemCount: 3,
+            itemCount: reviews.length,
             itemBuilder: (context, index) {
+              final review = reviews[index];
               return Container(
                 width: 280.w,
                 margin: EdgeInsets.only(left: 12.w),
@@ -58,8 +64,8 @@ class ProductReviews extends StatelessWidget {
                   children: [
                     ClipRRect(
                       borderRadius: BorderRadius.circular(8.r),
-                      child: Image.network(
-                        'https://i.pravatar.cc/150?img=${index + 11}',
+                      child: CustomImage(
+                        review.clientImage,
                         width: 40.w,
                         height: 40.w,
                         fit: BoxFit.cover,
@@ -74,7 +80,7 @@ class ProductReviews extends StatelessWidget {
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
                               Text(
-                                'محمد علي', // Mohammed Ali
+                                review.clientName,
                                 style: context.boldText.copyWith(
                                   fontSize: 14.sp,
                                   color: context.primaryColor,
@@ -83,8 +89,10 @@ class ProductReviews extends StatelessWidget {
                               Row(
                                 children: List.generate(
                                   5,
-                                  (index) => Icon(
-                                    Icons.star,
+                                  (starIndex) => Icon(
+                                    starIndex < review.value
+                                        ? Icons.star
+                                        : Icons.star_border,
                                     color: Colors.orange,
                                     size: 12.sp,
                                   ),
@@ -94,7 +102,7 @@ class ProductReviews extends StatelessWidget {
                           ),
                           SizedBox(height: 4.h),
                           Text(
-                            'هذا النص هو مثال لنص يمكن أن يستبدل في نفس المساحة، لقد تم توليد هذا النص من مولد النص العربي.',
+                            review.comment,
                             style: context.regularText.copyWith(
                               fontSize: 12.sp,
                               color: context.hintColor,

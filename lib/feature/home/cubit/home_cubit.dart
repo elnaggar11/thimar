@@ -19,61 +19,62 @@ class HomeCubit extends Cubit<HomeState> {
   void getHomeData() async {
     emit(state.copyWith(state: RequestState.loading));
 
-    await Future.delayed(const Duration(milliseconds: 500));
-
-    // Dummy Categories
-    final categories = [
-      CategoryModel.fromJson({
-        "id": 1,
-        "name": 'vegetables', // Will be translated in UI
-        "image": {"path": 'assets/icons/vegetable.svg'},
-      }),
-      CategoryModel.fromJson({
-        "id": 2,
-        "name": 'fruits',
-        "image": {
-          "path": 'assets/icons/vegetable.svg',
-        }, // using available dummy icon
-      }),
-      CategoryModel.fromJson({
-        "id": 3,
-        "name": 'meat',
-        "image": {
-          "path": 'assets/icons/item.svg',
-        }, // using available dummy icon
-      }),
-      CategoryModel.fromJson({
-        "id": 4,
-        "name": 'spices',
-        "image": {
-          "path": 'assets/icons/setting.svg',
-        }, // using available dummy icon
-      }),
-    ];
-
-    // Dummy Products
-    final products = List.generate(
-      4,
-      (index) => ProductModel.fromJson({
-        "id": index,
-        "name": 'طماطم', // Tomato
-        "main": {
-          "path":
-              'https://img.freepik.com/free-photo/tomatoes_144627-15411.jpg',
-        },
-        "price": 56.0,
-        "discount": 45.0,
-        "price_after_discount": 45.0,
-      }),
+    final categoriesRes = await ServerGate.i.getFromServer(
+      url: APIconst.categories,
     );
+    final productsRes = await ServerGate.i.getFromServer(
+      url: APIconst.products,
+    );
+
+    List<CategoryModel> categories = [];
+    if (categoriesRes.success) {
+      categories = List<CategoryModel>.from(
+        (categoriesRes.data['data'] ?? []).map(
+          (x) => CategoryModel.fromJson(x),
+        ),
+      );
+    }
+
+    List<ProductModel> products = [];
+    if (productsRes.success) {
+      products = List<ProductModel>.from(
+        (productsRes.data['data'] ?? []).map((x) => ProductModel.fromJson(x)),
+      );
+    }
+
+    final bool isSuccess = categoriesRes.success || productsRes.success;
 
     emit(
       state.copyWith(
-        state: RequestState.done,
+        state: isSuccess ? RequestState.done : RequestState.error,
+        message: isSuccess ? '' : categoriesRes.msg,
         categories: categories,
         products: products,
+        selectedCategoryId: null, // General products
       ),
     );
+  }
+
+  Future<void> getProductsByCategory(int categoryId) async {
+    emit(
+      state.copyWith(
+        state: RequestState.loading,
+        selectedCategoryId: categoryId,
+      ),
+    );
+
+    final productsRes = await ServerGate.i.getFromServer(
+      url: APIconst.categoryProducts(categoryId.toString()),
+    );
+
+    if (productsRes.success) {
+      final products = List<ProductModel>.from(
+        (productsRes.data['data'] ?? []).map((x) => ProductModel.fromJson(x)),
+      );
+      emit(state.copyWith(state: RequestState.done, products: products));
+    } else {
+      emit(state.copyWith(state: RequestState.error, message: productsRes.msg));
+    }
   }
 
   Future<void> getSliders() async {
