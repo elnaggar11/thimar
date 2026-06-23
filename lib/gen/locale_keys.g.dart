@@ -413,4 +413,34 @@ abstract class LocaleKeys {
   static const productsTotal = 'productsTotal';
   static const discount = 'discount';
   static const goToCheckout = 'goToCheckout';
+  
+  // Wallet Keys
+  static const yourBalance = 'yourBalance';
+  static const chargeNow = 'chargeNow';
+  static const transactionHistory = 'transactionHistory';
+  static const noTransactionsYet = 'noTransactionsYet';
+  static const chargeWalletActivity = 'chargeWalletActivity';
+  static const paidForThisOrder = 'paidForThisOrder';
+  static const orderNum = 'orderNum';
+  static const amountInfo = 'amountInfo';
+  static const yourAmount = 'yourAmount';
+  static const cardInfo = 'cardInfo';
+  static const creditCardNumber = 'creditCardNumber';
+  static const expiryDate = 'expiryDate';
+  static const cvv = 'cvv';
+  static const pay = 'pay';
+
+  // Addresses Keys
+  static const noAddressesYet = 'noAddressesYet';
+  static const addAddress = 'addAddress';
+  static const work = 'work';
+  static const enterPhoneNumber = 'enterPhoneNumber';
+  static const description = 'description';
+  static const updateAddress = 'updateAddress';
+  static const addressType = 'addressType';
+  static const addCard = 'addCard';
+  static const cardHolderName = 'cardHolderName';
+  static const cardNumber = 'cardNumber';
+  static const expiryDateMonthYear = 'expiryDateMonthYear';
+  static const cvvNumber = 'cvvNumber';
 }

@@ -16,6 +16,13 @@ import 'package:thimar/feature/faqs/view.dart';
 import 'package:thimar/feature/policy/view.dart';
 import 'package:thimar/feature/terms/view.dart';
 import 'package:thimar/feature/cart/view.dart';
+import 'package:thimar/feature/addresses/view.dart';
+import 'package:thimar/feature/addresses/add_address_view.dart';
+
+import 'package:thimar/feature/wallet/view.dart';
+import 'package:thimar/feature/wallet/charge_wallet_view.dart';
+import 'package:thimar/feature/notifications/view.dart';
+import 'package:thimar/feature/cards/view.dart';
 
 import 'routes.dart';
 
@@ -43,5 +50,11 @@ class AppRoutes {
     NamedRoutes.termsAndConditions: (c) => const TermsView(),
     NamedRoutes.contactUs: (c) => const ContactUsView(),
     NamedRoutes.cart: (c) => const CartView(),
+    NamedRoutes.addresses: (c) => const AddressesView(),
+    NamedRoutes.addAddress: (c) => AddAddressView(address: c.arg?['address']),
+    NamedRoutes.wallet: (c) => const WalletView(),
+    NamedRoutes.chargeWallet: (c) => const ChargeWalletView(),
+    NamedRoutes.notification: (c) => const NotificationsView(),
+    NamedRoutes.cards: (c) => const CardsView(),
   };
 }

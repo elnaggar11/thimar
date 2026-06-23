@@ -27,7 +27,7 @@ class FlashHelper {
           decoration: BoxDecoration(
             border: Border.all(
               color: type == MessageType.success
-                  ? AppThemes.secondaryColor.color
+                  ? context.primaryColor
                   : _getBgColor(type),
             ),
             borderRadius: BorderRadius.circular(20.r),
@@ -36,7 +36,7 @@ class FlashHelper {
           child: Row(
             spacing: 10.w,
             children: [
-              _getIcon(type),
+              _getIcon(type, context),
               Expanded(
                 child: Text(
                   msg,
@@ -55,16 +55,16 @@ class FlashHelper {
     );
   }
 
-  static Widget _getIcon(MessageType msgType) {
+  static Widget _getIcon(MessageType msgType, BuildContext context) {
     switch (msgType) {
       case MessageType.success:
         return Container(
           padding: EdgeInsets.all(4.w),
           decoration: BoxDecoration(
-            color: AppThemes.secondaryColor.color.withValues(alpha: 0.4),
+            color: context.primaryColor.withValues(alpha: 0.4),
             shape: BoxShape.circle,
           ),
-          child: Icon(Icons.check, color: AppThemes.secondaryColor.color),
+          child: Icon(Icons.check, color: Colors.white),
         );
       case MessageType.warning:
         return Icon(

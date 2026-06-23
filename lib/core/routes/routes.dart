@@ -46,4 +46,9 @@ class NamedRoutes {
   static const complaintsAndSuggestions = "/complaintsAndSuggestions";
   static const personalInfo = "/personalInfo";
   static const cart = "/cart";
+  static const addresses = "/addresses";
+  static const addAddress = "/addAddress";
+  static const wallet = "/wallet";
+  static const chargeWallet = "/chargeWallet";
+  static const cards = "/cards";
 }

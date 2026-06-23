@@ -26,4 +26,13 @@ class APIconst {
   static String productRates(String id) => 'products/$id/rates';
   static String categoryProducts(String id) => 'categories/$id';
   static const cart = 'client/cart';
+  static String updateCartItem(String id) => 'client/cart/$id';
+  static String deleteCartItem(String id) => 'client/cart/delete_item/$id';
+  static const addresses = 'client/addresses';
+  static String deleteAddress(String id) => 'client/addresses/$id';
+  static String updateAddress(String id) => 'client/addresses/$id';
+  
+  static const wallet = 'wallet';
+  static const chargeWallet = 'wallet/charge';
+  static const notifications = 'notifications';
 }

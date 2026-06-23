@@ -2,37 +2,34 @@ import 'package:flutter/material.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 
 import 'address_model.dart';
-import 'city_model.dart';
-import 'district_model.dart';
 
 class AddressInputModel {
   String? id;
   LatLng? latLng;
   String? location;
 
-  final titleController = TextEditingController();
-  final streetController = TextEditingController();
-  CityModel? selectedCity;
-  DistrictModel? selectedDistrict;
+  final typeController = TextEditingController();
+  final phoneController = TextEditingController();
+  final descriptionController = TextEditingController();
   bool isDefault = false;
+
   AddressInputModel();
 
   AddressInputModel.fromModel(AddressModel model) {
     id = model.id;
     latLng = LatLng(model.lat, model.lng);
     location = model.location;
-    titleController.text = model.title;
-    streetController.text = model.street;
-    selectedCity = model.city;
-    selectedDistrict = model.district;
+    typeController.text = model.type;
+    phoneController.text = model.phone;
+    descriptionController.text = model.description;
+    isDefault = model.isDefault;
   }
 
   Map<String, dynamic> toJson() => {
     if (id != null) '_method': "PUT",
-    'title': titleController.text.trim(),
-    'city_id': selectedCity?.id,
-    'district_id': selectedDistrict?.id,
-    'street': streetController.text.trim(),
+    'type': typeController.text.trim(),
+    'phone': phoneController.text.trim(),
+    'description': descriptionController.text.trim(),
     'location': location,
     'lat': latLng?.latitude,
     'lng': latLng?.longitude,

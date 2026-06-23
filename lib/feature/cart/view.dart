@@ -1,3 +1,4 @@
+import 'package:animate_do/animate_do.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -7,11 +8,13 @@ import 'package:thimar/core/utils/enums.dart';
 import 'package:thimar/core/utils/extensions.dart';
 import 'package:thimar/core/widgets/app_btn.dart';
 import 'package:thimar/core/widgets/app_field.dart';
+import 'package:thimar/core/widgets/custom_image.dart';
 import 'package:thimar/core/widgets/loading.dart';
 import 'package:thimar/core/widgets/main_app_bar.dart';
 import 'package:thimar/feature/cart/cubit/cart_cubit.dart';
 import 'package:thimar/feature/cart/cubit/cart_state.dart';
 import 'package:thimar/feature/cart/widgets/cart_item_widget.dart';
+import 'package:thimar/gen/assets.gen.dart';
 import 'package:thimar/gen/locale_keys.g.dart';
 
 class CartView extends StatefulWidget {
@@ -42,10 +45,7 @@ class _CartViewState extends State<CartView> {
     return BlocProvider.value(
       value: _cubit,
       child: Scaffold(
-        appBar: MainAppBar(
-          title: LocaleKeys.cart.tr(),
-          isTitleCentered: true,
-        ),
+        appBar: MainAppBar(title: LocaleKeys.cart.tr(), isTitleCentered: true),
         body: BlocBuilder<CartCubit, CartState>(
           builder: (context, state) {
             if (state.state == RequestState.loading) {
@@ -63,9 +63,40 @@ class _CartViewState extends State<CartView> {
 
             if (state.cartData == null || state.cartData!.items.isEmpty) {
               return Center(
-                child: Text(
-                  LocaleKeys.dataNotFound.tr(),
-                  style: context.boldText.copyWith(color: context.primaryColor),
+                child: Pulse(
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      CustomImage(
+                        Assets.icons.bag,
+                        width: 100.w,
+                        height: 100.w,
+                        color: context.primaryColor,
+                      ),
+
+                      SizedBox(height: 20.h),
+                      Text(
+                        LocaleKeys.there_are_no_items_to_display_in_this_section
+                            .tr(),
+                        style: context.mediumText.copyWith(
+                          fontSize: 14.sp,
+                          color: context.primaryColor,
+                        ),
+                      ),
+                      SizedBox(height: 32.h),
+                      CustomButton(
+                        title: LocaleKeys.searchHome.tr(),
+                        fontSize: 12.sp,
+                        width: 200.w,
+                        backgroundColor: context.primaryColor,
+                        textColor: Colors.white,
+                        borderRadius: BorderRadius.circular(12.r),
+                        onTap: () {
+                          Navigator.pop(context);
+                        },
+                      ),
+                    ],
+                  ),
                 ),
               );
             }
@@ -77,20 +108,34 @@ class _CartViewState extends State<CartView> {
                 children: [
                   Expanded(
                     child: ListView.separated(
-                      padding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 16.h),
+                      padding: EdgeInsets.symmetric(
+                        horizontal: 16.w,
+                        vertical: 16.h,
+                      ),
                       itemCount: cart.items.length,
-                      separatorBuilder: (context, index) => SizedBox(height: 16.h),
+                      separatorBuilder: (context, index) =>
+                          SizedBox(height: 16.h),
                       itemBuilder: (context, index) {
                         return CartItemWidget(
                           item: cart.items[index],
                           onAdd: () {
-                            // Implement add logic
+                            _cubit.updateCartItemLocal(
+                              cartItemId: cart.items[index].id,
+                              amount: cart.items[index].amount + 1,
+                            );
                           },
                           onRemove: () {
-                            // Implement remove logic
+                            if (cart.items[index].amount > 1) {
+                              _cubit.updateCartItemLocal(
+                                cartItemId: cart.items[index].id,
+                                amount: cart.items[index].amount - 1,
+                              );
+                            }
                           },
                           onDelete: () {
-                            // Implement delete logic
+                            _cubit.deleteCartItem(
+                              cartItemId: cart.items[index].id,
+                            );
                           },
                         );
                       },
@@ -140,6 +185,7 @@ class _CartViewState extends State<CartView> {
                 backgroundColor: context.primaryColor,
                 textColor: Colors.white,
                 borderRadius: BorderRadius.circular(12.r),
+                fontSize: 14.sp,
                 onTap: () {
                   // Implement coupon apply logic
                 },
@@ -176,7 +222,7 @@ class _CartViewState extends State<CartView> {
                       ),
                     ),
                     Text(
-                      '${cart.summary.subtotal} ${LocaleKeys.sar.tr()}',
+                      '${cart.totalPriceBeforeDiscount} ${LocaleKeys.sar.tr()}',
                       style: context.regularText.copyWith(
                         fontSize: 14.sp,
                         color: context.primaryColor,
@@ -196,7 +242,7 @@ class _CartViewState extends State<CartView> {
                       ),
                     ),
                     Text(
-                      '-${cart.discount ?? 0} ${LocaleKeys.sar.tr()}',
+                      '-${cart.totalDiscount} ${LocaleKeys.sar.tr()}',
                       style: context.regularText.copyWith(
                         fontSize: 14.sp,
                         color: context.primaryColor,
@@ -216,7 +262,7 @@ class _CartViewState extends State<CartView> {
                       ),
                     ),
                     Text(
-                      '${cart.summary.total} ${LocaleKeys.sar.tr()}',
+                      '${cart.totalPriceWithVat} ${LocaleKeys.sar.tr()}',
                       style: context.boldText.copyWith(
                         fontSize: 14.sp,
                         color: context.primaryColor,

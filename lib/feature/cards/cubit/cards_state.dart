@@ -1,29 +1,29 @@
-part of 'notifications_cubit.dart';
+part of 'cards_cubit.dart';
 
-class NotificationsState {
+class CardsState {
   final RequestState state;
+  final RequestState addCardState;
   final String message;
   final ErrorType errorType;
-  final List<NotificationModel> notifications;
 
-  NotificationsState({
+  CardsState({
     this.state = RequestState.initial,
+    this.addCardState = RequestState.initial,
     this.message = '',
     this.errorType = ErrorType.none,
-    this.notifications = const [],
   });
 
-  NotificationsState copyWith({
+  CardsState copyWith({
     RequestState? state,
+    RequestState? addCardState,
     String? message,
     ErrorType? errorType,
-    List<NotificationModel>? notifications,
   }) {
-    return NotificationsState(
+    return CardsState(
       state: state ?? this.state,
+      addCardState: addCardState ?? this.addCardState,
       message: message ?? this.message,
       errorType: errorType ?? this.errorType,
-      notifications: notifications ?? this.notifications,
     );
   }
 }

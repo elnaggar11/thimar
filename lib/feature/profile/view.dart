@@ -42,12 +42,16 @@ class ProfileView extends StatelessWidget {
       _ProfileItemData(
         title: LocaleKeys.wallet.tr(),
         icon: Assets.icons.wallet,
-        onTap: () {},
+        onTap: () {
+          push(NamedRoutes.wallet);
+        },
       ),
       _ProfileItemData(
         title: LocaleKeys.addresses.tr(),
         icon: Assets.icons.location,
-        onTap: () {},
+        onTap: () {
+          push(NamedRoutes.addresses);
+        },
       ),
       _ProfileItemData(
         title: LocaleKeys.payment.tr(),

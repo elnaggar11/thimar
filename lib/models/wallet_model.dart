@@ -12,9 +12,20 @@ class WalletModel extends Model {
     balance = stringFromJson(json, 'balance');
     withdrawalBalance = stringFromJson(json, 'withdrawal_balance');
     totalBalance = numFromJson(json, 'total_balance');
-    transactions = (json?['transactions'] as List<dynamic>? ?? [])
+    // Safely extract transactions list
+    List<dynamic> txList = [];
+    if (json?['transactions'] is List) {
+      txList = json!['transactions'];
+    } else if (json?['wallet_transactions'] is List) {
+      txList = json!['wallet_transactions'];
+    } else if (json?['wallet_transactions'] is Map && json!['wallet_transactions']['data'] is List) {
+      txList = json['wallet_transactions']['data'];
+    }
+    
+    transactions = txList
         .map((e) => WalletTransaction.fromJson(e as Map<String, dynamic>?))
         .toList();
+        
     loyalty = LoyaltyInfoModel.fromJson(
       json?['loyalty'] as Map<String, dynamic>?,
     );

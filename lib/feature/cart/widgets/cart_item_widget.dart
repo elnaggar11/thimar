@@ -3,11 +3,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:thimar/core/utils/extensions.dart';
 import 'package:thimar/core/widgets/custom_image.dart';
+import 'package:thimar/gen/assets.gen.dart';
 import 'package:thimar/gen/locale_keys.g.dart';
 import 'package:thimar/models/cart_model.dart';
 
 class CartItemWidget extends StatelessWidget {
-  final CartItemModle item;
+  final CartItemModel item;
   final VoidCallback onAdd;
   final VoidCallback onRemove;
   final VoidCallback onDelete;
@@ -38,40 +39,38 @@ class CartItemWidget extends StatelessWidget {
       ),
       child: Row(
         children: [
-          // Delete icon on the far left (in RTL mode it's at the end)
-          GestureDetector(
-            onTap: onDelete,
-            child: Container(
-              padding: EdgeInsets.all(8.r),
-              decoration: BoxDecoration(
-                color: Colors.red.withValues(alpha: 0.1),
-                borderRadius: BorderRadius.circular(8.r),
-              ),
-              child: Icon(Icons.delete_outline, color: Colors.red, size: 20.sp),
+          // Image on the start
+          ClipRRect(
+            borderRadius: BorderRadius.circular(12.r),
+            child: CustomImage(
+              item.image,
+              width: 80.w,
+              height: 80.w,
+              fit: BoxFit.cover,
             ),
           ),
           SizedBox(width: 12.w),
 
           Expanded(
             child: Column(
-              crossAxisAlignment: CrossAxisAlignment.end,
+              crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
-                  item.productName,
+                  item.title,
                   style: context.boldText.copyWith(
                     fontSize: 14.sp,
                     color: context.primaryColor,
                   ),
-                  textAlign: TextAlign.end,
+                  textAlign: TextAlign.start,
                 ),
                 SizedBox(height: 4.h),
                 Text(
-                  '${item.priceAfterDiscount} ${LocaleKeys.sar.tr()}',
+                  '${item.price} ${LocaleKeys.sar.tr()}',
                   style: context.boldText.copyWith(
                     fontSize: 14.sp,
                     color: context.primaryColor,
                   ),
-                  textAlign: TextAlign.end,
+                  textAlign: TextAlign.start,
                 ),
                 SizedBox(height: 8.h),
                 Container(
@@ -84,16 +83,23 @@ class CartItemWidget extends StatelessWidget {
                     mainAxisSize: MainAxisSize.min,
                     children: [
                       GestureDetector(
-                        onTap: onRemove,
-                        child: Icon(
-                          Icons.remove,
-                          color: context.primaryColor,
-                          size: 20.sp,
+                        onTap: onAdd,
+                        child: Container(
+                          padding: EdgeInsets.all(4.r),
+                          decoration: BoxDecoration(
+                            color: Colors.white,
+                            borderRadius: BorderRadius.circular(6.r),
+                          ),
+                          child: Icon(
+                            Icons.add,
+                            color: context.primaryColor,
+                            size: 16.sp,
+                          ),
                         ),
                       ),
                       SizedBox(width: 12.w),
                       Text(
-                        '${item.quantity}',
+                        '${item.amount}',
                         style: context.boldText.copyWith(
                           fontSize: 14.sp,
                           color: context.primaryColor,
@@ -101,11 +107,18 @@ class CartItemWidget extends StatelessWidget {
                       ),
                       SizedBox(width: 12.w),
                       GestureDetector(
-                        onTap: onAdd,
-                        child: Icon(
-                          Icons.add,
-                          color: context.primaryColor,
-                          size: 20.sp,
+                        onTap: onRemove,
+                        child: Container(
+                          padding: EdgeInsets.all(4.r),
+                          decoration: BoxDecoration(
+                            color: Colors.white,
+                            borderRadius: BorderRadius.circular(6.r),
+                          ),
+                          child: Icon(
+                            Icons.remove,
+                            color: context.primaryColor,
+                            size: 16.sp,
+                          ),
                         ),
                       ),
                     ],
@@ -114,15 +127,18 @@ class CartItemWidget extends StatelessWidget {
               ],
             ),
           ),
+
           SizedBox(width: 12.w),
-          // Image on the far right (start in RTL)
-          ClipRRect(
-            borderRadius: BorderRadius.circular(12.r),
-            child: CustomImage(
-              item.image,
-              width: 80.w,
-              height: 80.w,
-              fit: BoxFit.cover,
+          // Delete icon on the end
+          GestureDetector(
+            onTap: onDelete,
+            child: Container(
+              padding: EdgeInsets.all(8.r),
+              decoration: BoxDecoration(
+                color: Colors.red.withValues(alpha: 0.1),
+                borderRadius: BorderRadius.circular(8.r),
+              ),
+              child: CustomImage(Assets.icons.trash, width: 20, height: 20),
             ),
           ),
         ],

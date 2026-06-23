@@ -11,6 +11,7 @@ import 'package:thimar/core/widgets/custom_image.dart';
 import 'package:thimar/gen/locale_keys.g.dart';
 import 'package:thimar/models/product_model.dart';
 import 'package:thimar/core/services/service_locator.dart';
+import 'package:thimar/feature/cart/cubit/cart_cubit.dart';
 import 'package:thimar/feature/favorites/cubit/favorites_cubit.dart';
 
 class ProductItem extends StatefulWidget {
@@ -162,7 +163,12 @@ class _ProductItemState extends State<ProductItem> {
                       backgroundColor: Color(0xFF61B80C),
                       height: 35.h,
                       title: LocaleKeys.addToCart.tr(),
-                      onTap: () {},
+                      onTap: () {
+                        sl<CartCubit>().addToCart(
+                          productId: widget.product.id,
+                          amount: 1,
+                        );
+                      },
                       textColor: Colors.white,
                       fontSize: 12.sp,
                       borderRadius: BorderRadius.circular(8.r),
@@ -194,9 +200,9 @@ class _ProductItemState extends State<ProductItem> {
               ),
             ),
             Positioned.directional(
-              textDirection: Directionality.of(context),
+              textDirection: ui.TextDirection.ltr,
               top: 8.h,
-              start: 8.w,
+              end: 8.w,
               child: GestureDetector(
                 onTap: _toggleFavorite,
                 child: Container(

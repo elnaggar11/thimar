@@ -6,6 +6,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:thimar/core/services/service_locator.dart';
 import 'package:thimar/core/utils/extensions.dart';
 import 'package:thimar/core/widgets/custom_image.dart';
+import 'package:thimar/feature/cart/cubit/cart_cubit.dart';
 import 'package:thimar/feature/product_details/cubit/product_details_cubit.dart';
 import 'package:thimar/feature/product_details/cubit/product_details_state.dart';
 import 'package:thimar/feature/product_details/widgets/product_code.dart';
@@ -53,7 +54,10 @@ class _ProductDetailsViewState extends State<ProductDetailsView> {
             delay: const Duration(milliseconds: 600),
             child: InkWell(
               onTap: () {
-                // TODO: Handle Add to Cart
+                sl<CartCubit>().addToCart(
+                  productId: widget.product.id,
+                  amount: state.quantity,
+                );
               },
               child: Container(
                 height: 60.h,
