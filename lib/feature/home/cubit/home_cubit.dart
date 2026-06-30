@@ -17,7 +17,7 @@ class HomeCubit extends Cubit<HomeState> {
   final searchController = TextEditingController();
 
   void getHomeData() async {
-    emit(state.copyWith(state: RequestState.loading));
+    emit(state.copyWith(state: RequestState.loading, clearSelectedCategoryId: true));
 
     final categoriesRes = await ServerGate.i.getFromServer(
       url: APIconst.categories,
@@ -50,7 +50,7 @@ class HomeCubit extends Cubit<HomeState> {
         message: isSuccess ? '' : categoriesRes.msg,
         categories: categories,
         products: products,
-        selectedCategoryId: null, // General products
+        clearSelectedCategoryId: true, // General products
       ),
     );
   }

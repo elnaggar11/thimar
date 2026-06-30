@@ -222,6 +222,9 @@ abstract class LocaleKeys {
   static const calendar = 'calendar';
   static const totalAppointments = 'totalAppointments';
   static const myBookings = 'myBookings';
+  static const currentOrders = 'currentOrders';
+  static const finishedOrders = 'finishedOrders';
+  static const orderNum = 'orderNum';
   static const last3Months = 'last3Months';
   static const last6Months = 'last6Months';
   static const date = 'date';
@@ -413,7 +416,7 @@ abstract class LocaleKeys {
   static const productsTotal = 'productsTotal';
   static const discount = 'discount';
   static const goToCheckout = 'goToCheckout';
-  
+
   // Wallet Keys
   static const yourBalance = 'yourBalance';
   static const chargeNow = 'chargeNow';
@@ -421,7 +424,6 @@ abstract class LocaleKeys {
   static const noTransactionsYet = 'noTransactionsYet';
   static const chargeWalletActivity = 'chargeWalletActivity';
   static const paidForThisOrder = 'paidForThisOrder';
-  static const orderNum = 'orderNum';
   static const amountInfo = 'amountInfo';
   static const yourAmount = 'yourAmount';
   static const cardInfo = 'cardInfo';
@@ -432,6 +434,7 @@ abstract class LocaleKeys {
 
   // Addresses Keys
   static const noAddressesYet = 'noAddressesYet';
+  static const noSavedAddresses = 'noSavedAddresses';
   static const addAddress = 'addAddress';
   static const work = 'work';
   static const enterPhoneNumber = 'enterPhoneNumber';
@@ -443,4 +446,22 @@ abstract class LocaleKeys {
   static const cardNumber = 'cardNumber';
   static const expiryDateMonthYear = 'expiryDateMonthYear';
   static const cvvNumber = 'cvvNumber';
+
+  // Checkout
+  static const checkout = 'checkout';
+  static const chooseDeliveryAddress = 'chooseDeliveryAddress';
+  static const selectDeliveryTime = 'selectDeliveryTime';
+  static const selectDayAndDate = 'selectDayAndDate';
+  static const selectTime = 'selectTime';
+  static const notesAndInstructions = 'notesAndInstructions';
+  static const choosePaymentMethod = 'choosePaymentMethod';
+  static const cash = 'cash';
+  static const orderSummary = 'orderSummary';
+  static const deliveryCost = 'deliveryCost';
+  static const finishOrder = 'finishOrder';
+  static const pleaseSelectDateAndTime = 'pleaseSelectDateAndTime';
+  static const orderSentSuccessfully = 'orderSentSuccessfully';
+  static const savedCards = 'savedCards';
+  static const addPaymentCard = 'addPaymentCard';
+  static const confirmSelection = 'confirmSelection';
 }

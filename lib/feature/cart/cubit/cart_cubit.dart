@@ -49,6 +49,28 @@ class CartCubit extends Cubit<CartState> {
     }
   }
 
+  Future<void> applyCoupon(String code) async {
+    emit(state.copyWith(applyCouponState: RequestState.loading));
+    final response = await ServerGate.i.sendToServer(
+      url: APIconst.applyCoupon,
+      formData: {'code': code},
+    );
+
+    if (response.success) {
+      emit(state.copyWith(applyCouponState: RequestState.done));
+      FlashHelper.showToast(response.msg, type: MessageType.success);
+      getCart();
+    } else {
+      emit(
+        state.copyWith(
+          applyCouponState: RequestState.error,
+          message: response.msg,
+        ),
+      );
+      FlashHelper.showToast(response.msg, type: MessageType.fail);
+    }
+  }
+
   void updateCartItemLocal({required String cartItemId, required int amount}) {
     final cart = state.cartData;
     if (cart != null) {

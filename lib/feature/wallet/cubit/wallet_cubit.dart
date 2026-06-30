@@ -24,7 +24,7 @@ class WalletCubit extends Cubit<WalletState> {
 
     if (response.success) {
       final WalletModel walletData = WalletModel.fromJson(
-        response.data['data'],
+        response.data,
       );
       emit(state.copyWith(state: RequestState.done, walletData: walletData));
     } else {

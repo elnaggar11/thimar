@@ -319,3 +319,15 @@ class RequestAddress {
     "lng": lng,
   };
 }
+
+class TimelineStep {
+  final String title;
+  final String time;
+  final bool isDone;
+
+  TimelineStep({
+    required this.title,
+    required this.time,
+    required this.isDone,
+  });
+}

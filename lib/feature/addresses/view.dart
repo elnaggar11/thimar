@@ -6,6 +6,7 @@ import 'package:thimar/core/utils/enums.dart';
 import 'package:thimar/core/utils/extensions.dart';
 import 'package:thimar/core/widgets/loading.dart';
 import 'package:thimar/core/widgets/main_app_bar.dart';
+import 'package:thimar/core/widgets/error_widget.dart';
 import 'package:thimar/feature/addresses/cubit/addresses_cubit.dart';
 import 'package:thimar/feature/addresses/cubit/addresses_state.dart';
 import 'package:thimar/feature/addresses/widgets/address_item_widget.dart';
@@ -49,7 +50,12 @@ class _AddressesViewState extends State<AddressesView> {
               child: Column(
                 children: [
                   Expanded(
-                    child: ListView.separated(
+                    child: state.addresses.isEmpty
+                        ? const CustomErrorWidget(
+                            title: 'لا يوجد عناوين مضافة',
+                            errType: ErrorType.empty,
+                          )
+                        : ListView.separated(
                       padding: EdgeInsets.symmetric(
                         horizontal: 16.w,
                         vertical: 16.h,
@@ -71,7 +77,7 @@ class _AddressesViewState extends State<AddressesView> {
                             });
                           },
                           onDelete: () {
-                            _cubit.deleteAddress(state.addresses[index].id);
+                            _cubit.deleteAddress(state.addresses[index].id, type: state.addresses[index].type);
                           },
                         );
                       },

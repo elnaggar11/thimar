@@ -25,6 +25,8 @@ import 'package:thimar/feature/cart/cubit/cart_cubit.dart';
 import 'package:thimar/feature/addresses/cubit/addresses_cubit.dart';
 import 'package:thimar/feature/wallet/cubit/wallet_cubit.dart';
 import 'package:thimar/feature/cards/cubit/cards_cubit.dart';
+import 'package:thimar/feature/rate_products/cubit/rate_products_cubit.dart';
+
 final sl = GetIt.instance;
 
 class ServicesLocator {
@@ -54,5 +56,6 @@ class ServicesLocator {
     sl.registerFactory(() => AddressesCubit());
     sl.registerFactory(() => WalletCubit());
     sl.registerFactory(() => CardsCubit());
+    sl.registerFactory(() => RateProductsCubit());
   }
 }

@@ -6,13 +6,13 @@ import 'package:thimar/models/category_model.dart';
 
 class CategoryItem extends StatelessWidget {
   final CategoryModel category;
-  final bool isSelected;
+  final bool? isSelected;
   final VoidCallback? onTap;
 
   const CategoryItem({
     super.key,
     required this.category,
-    this.isSelected = false,
+    this.isSelected,
     this.onTap,
   });
 
@@ -30,10 +30,10 @@ class CategoryItem extends StatelessWidget {
               padding: EdgeInsets.all(16.r),
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(12.r),
-                border: isSelected
+                border: isSelected == true
                     ? Border.all(color: context.primaryColor, width: 2)
                     : null,
-                color: isSelected
+                color: isSelected == true
                     ? context.primaryColor.withValues(alpha: 0.1)
                     : null,
               ),
@@ -48,7 +48,7 @@ class CategoryItem extends StatelessWidget {
                 overflow: TextOverflow.ellipsis,
                 style: context.mediumText.copyWith(
                   fontSize: 14.sp,
-                  color: isSelected ? context.primaryColor : null,
+                  color: isSelected == true ? context.primaryColor : null,
                 ),
               ),
             ),

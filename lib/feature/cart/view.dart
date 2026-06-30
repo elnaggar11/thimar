@@ -3,6 +3,8 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:thimar/core/routes/app_routes_fun.dart';
+import 'package:thimar/core/routes/routes.dart';
 import 'package:thimar/core/services/service_locator.dart';
 import 'package:thimar/core/utils/enums.dart';
 import 'package:thimar/core/utils/extensions.dart';
@@ -25,13 +27,12 @@ class CartView extends StatefulWidget {
 }
 
 class _CartViewState extends State<CartView> {
-  late final CartCubit _cubit;
+  final _cubit = sl<CartCubit>();
   final TextEditingController _couponController = TextEditingController();
 
   @override
   void initState() {
     super.initState();
-    _cubit = sl<CartCubit>();
   }
 
   @override
@@ -178,16 +179,23 @@ class _CartViewState extends State<CartView> {
                 ),
               ),
               SizedBox(width: 12.w),
-              CustomButton(
-                title: LocaleKeys.apply.tr(),
-                width: 90.w,
-                height: 50.h,
-                backgroundColor: context.primaryColor,
-                textColor: Colors.white,
-                borderRadius: BorderRadius.circular(12.r),
-                fontSize: 14.sp,
-                onTap: () {
-                  // Implement coupon apply logic
+              BlocBuilder<CartCubit, CartState>(
+                builder: (context, state) {
+                  return CustomButton(
+                    title: LocaleKeys.apply.tr(),
+                    width: 90.w,
+                    height: 50.h,
+                    isLoading: state.applyCouponState == RequestState.loading,
+                    backgroundColor: context.primaryColor,
+                    textColor: Colors.white,
+                    borderRadius: BorderRadius.circular(12.r),
+                    fontSize: 14.sp,
+                    onTap: () {
+                      if (_couponController.text.isNotEmpty) {
+                        _cubit.applyCoupon(_couponController.text);
+                      }
+                    },
+                  );
                 },
               ),
             ],
@@ -277,7 +285,7 @@ class _CartViewState extends State<CartView> {
           CustomButton(
             title: LocaleKeys.goToCheckout.tr(),
             onTap: () {
-              // Navigate to checkout
+              push(NamedRoutes.checkout);
             },
             backgroundColor: context.primaryColor,
             textColor: Colors.white,

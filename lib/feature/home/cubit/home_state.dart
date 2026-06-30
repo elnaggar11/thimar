@@ -31,6 +31,7 @@ class HomeState {
     List<SliderModel>? banners,
     int? currentBannerIndex,
     int? selectedCategoryId,
+    bool clearSelectedCategoryId = false,
   }) {
     return HomeState(
       state: state ?? this.state,
@@ -39,7 +40,7 @@ class HomeState {
       products: products ?? this.products,
       banners: banners ?? this.banners,
       currentBannerIndex: currentBannerIndex ?? this.currentBannerIndex,
-      selectedCategoryId: selectedCategoryId ?? this.selectedCategoryId,
+      selectedCategoryId: clearSelectedCategoryId ? null : (selectedCategoryId ?? this.selectedCategoryId),
     );
   }
 }

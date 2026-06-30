@@ -26,6 +26,7 @@ class APIconst {
   static String productRates(String id) => 'products/$id/rates';
   static String categoryProducts(String id) => 'categories/$id';
   static const cart = 'client/cart';
+  static const applyCoupon = 'client/cart/apply_coupon';
   static String updateCartItem(String id) => 'client/cart/$id';
   static String deleteCartItem(String id) => 'client/cart/delete_item/$id';
   static const addresses = 'client/addresses';
@@ -35,4 +36,10 @@ class APIconst {
   static const wallet = 'wallet';
   static const chargeWallet = 'wallet/charge';
   static const notifications = 'notifications';
+  
+  static const currentOrders = 'client/orders/current';
+  static const finishedOrders = 'client/orders/finished';
+  static const storeOrder = 'client/orders';
+  static String orderDetails(int id) => 'client/orders/$id';
+  static String cancelOrder(int id) => 'client/orders/$id/cancel';
 }

@@ -91,6 +91,9 @@ class _WalletViewState extends State<WalletView> {
                       });
                     },
                     child: CustomDottedBorder(
+                      radius: 12.r,
+                      strokeWidth: 2.r,
+                      color: context.primaryColor,
                       child: Padding(
                         padding: EdgeInsets.symmetric(vertical: 16.h),
                         child: Text(

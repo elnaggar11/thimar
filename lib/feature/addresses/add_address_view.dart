@@ -9,7 +9,11 @@ import 'package:thimar/core/widgets/main_app_bar.dart';
 import 'package:thimar/feature/addresses/cubit/addresses_cubit.dart';
 import 'package:thimar/models/address_model.dart';
 import 'package:easy_localization/easy_localization.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:thimar/feature/addresses/cubit/addresses_state.dart';
 import 'package:thimar/gen/locale_keys.g.dart';
+import 'package:thimar/core/utils/enums.dart';
+
 
 class AddAddressView extends StatefulWidget {
   final AddressModel? address;
@@ -34,9 +38,9 @@ class _AddAddressViewState extends State<AddAddressView> {
   void initState() {
     super.initState();
     if (widget.address != null) {
-      _selectedType = widget.address!.type.isNotEmpty
-          ? widget.address!.type
-          : 'المنزل';
+      _selectedType = widget.address!.type == 'home'
+          ? 'المنزل'
+          : (widget.address!.type == 'work' ? 'العمل' : 'المنزل');
       _cubit.phoneController.text = widget.address!.phone;
       _cubit.descController.text = widget.address!.description;
       _selectedLocation = LatLng(widget.address!.lat, widget.address!.lng);
@@ -55,9 +59,10 @@ class _AddAddressViewState extends State<AddAddressView> {
     }
 
     bool success;
+    final apiType = _selectedType == 'المنزل' ? 'home' : 'work';
     if (widget.address == null) {
       success = await _cubit.addAddress(
-        type: _selectedType,
+        type: apiType,
         phone: _cubit.phoneController.text,
         description: _cubit.descController.text,
         lat: _selectedLocation.latitude,
@@ -66,7 +71,7 @@ class _AddAddressViewState extends State<AddAddressView> {
     } else {
       success = await _cubit.updateAddress(
         id: widget.address!.id,
-        type: _selectedType,
+        type: apiType,
         phone: _cubit.phoneController.text,
         description: _cubit.descController.text,
         lat: _selectedLocation.latitude,
@@ -158,14 +163,20 @@ class _AddAddressViewState extends State<AddAddressView> {
                     hintText: LocaleKeys.description.tr(),
                   ),
                   SizedBox(height: 24.h),
-                  CustomButton(
-                    title: widget.address == null
-                        ? LocaleKeys.addAddress.tr()
-                        : LocaleKeys.updateAddress.tr(),
-                    backgroundColor: context.primaryColor,
-                    textColor: Colors.white,
-                    borderRadius: BorderRadius.circular(16.r),
-                    onTap: _onAdd,
+                  BlocBuilder<AddressesCubit, AddressesState>(
+                    bloc: _cubit,
+                    builder: (context, state) {
+                      return CustomButton(
+                        title: widget.address == null
+                            ? LocaleKeys.addAddress.tr()
+                            : LocaleKeys.updateAddress.tr(),
+                        isLoading: state.state == RequestState.loading,
+                        backgroundColor: context.primaryColor,
+                        textColor: Colors.white,
+                        borderRadius: BorderRadius.circular(16.r),
+                        onTap: _onAdd,
+                      );
+                    },
                   ),
                   SizedBox(height: 8.h),
                 ],

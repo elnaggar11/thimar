@@ -20,9 +20,10 @@ class AddressesCubit extends Cubit<AddressesState> {
     final response = await ServerGate.i.getFromServer(url: APIconst.addresses);
 
     if (response.success) {
-      final List<AddressModel> addresses = (response.data['data'] as List)
-          .map((e) => AddressModel.fromJson(e))
-          .toList();
+      final data = response.data['data'];
+      final List<AddressModel> addresses = data != null
+          ? (data as List).map((e) => AddressModel.fromJson(e)).toList()
+          : [];
       emit(state.copyWith(state: RequestState.done, addresses: addresses));
     } else {
       emit(state.copyWith(state: RequestState.error, message: response.msg));
@@ -36,16 +37,17 @@ class AddressesCubit extends Cubit<AddressesState> {
     required double lat,
     required double lng,
   }) async {
+    emit(state.copyWith(state: RequestState.loading));
     final response = await ServerGate.i.sendToServer(
       url: APIconst.addresses,
-      body: {
+      formData: {
         'type': type,
         'phone': phone,
         'description': description,
         'location': 'موقع محدد من الخريطة',
-        'lat': lat,
-        'lng': lng,
-        'is_default': 1,
+        'lat': lat.toString(),
+        'lng': lng.toString(),
+        'is_default': '1',
       },
     );
 
@@ -54,6 +56,7 @@ class AddressesCubit extends Cubit<AddressesState> {
       getAddresses();
       return true;
     } else {
+      emit(state.copyWith(state: RequestState.error, message: response.msg));
       FlashHelper.showToast(response.msg, type: MessageType.fail);
       return false;
     }
@@ -67,8 +70,12 @@ class AddressesCubit extends Cubit<AddressesState> {
     required double lat,
     required double lng,
   }) async {
+    emit(state.copyWith(state: RequestState.loading));
     final response = await ServerGate.i.putToServer(
       url: APIconst.updateAddress(id),
+      headers: {
+        'Content-Type': 'application/x-www-form-urlencoded',
+      },
       body: {
         'type': type,
         'phone': phone,
@@ -85,14 +92,22 @@ class AddressesCubit extends Cubit<AddressesState> {
       getAddresses();
       return true;
     } else {
+      emit(state.copyWith(state: RequestState.error, message: response.msg));
       FlashHelper.showToast(response.msg, type: MessageType.fail);
       return false;
     }
   }
 
-  Future<bool> deleteAddress(String id) async {
+  Future<bool> deleteAddress(String id, {String? type}) async {
+    emit(state.copyWith(state: RequestState.loading));
     final response = await ServerGate.i.deleteFromServer(
       url: APIconst.deleteAddress(id),
+      headers: {
+        'Content-Type': 'application/x-www-form-urlencoded',
+      },
+      body: {
+        if (type != null) 'type': type,
+      },
     );
 
     if (response.success) {
@@ -100,6 +115,7 @@ class AddressesCubit extends Cubit<AddressesState> {
       getAddresses();
       return true;
     } else {
+      emit(state.copyWith(state: RequestState.error, message: response.msg));
       FlashHelper.showToast(response.msg, type: MessageType.fail);
       return false;
     }

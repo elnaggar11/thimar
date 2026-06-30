@@ -9,12 +9,15 @@ class WalletModel extends Model {
 
   WalletModel.fromJson([Map<String, dynamic>? json]) {
     id = stringFromJson(json, 'id'); // optional backend id if exists
-    balance = stringFromJson(json, 'balance');
+    final walletBalance = stringFromJson(json, 'wallet');
+    balance = walletBalance.isNotEmpty ? walletBalance : stringFromJson(json, 'balance');
     withdrawalBalance = stringFromJson(json, 'withdrawal_balance');
     totalBalance = numFromJson(json, 'total_balance');
     // Safely extract transactions list
     List<dynamic> txList = [];
-    if (json?['transactions'] is List) {
+    if (json?['data'] is List) {
+      txList = json!['data'];
+    } else if (json?['transactions'] is List) {
       txList = json!['transactions'];
     } else if (json?['wallet_transactions'] is List) {
       txList = json!['wallet_transactions'];
@@ -59,17 +62,25 @@ class WalletTransaction extends Model {
   WalletTransaction.fromJson([Map<String, dynamic>? json]) {
     id = stringFromJson(json, 'id');
     walletId = stringFromJson(json, 'wallet_id');
-    type = stringFromJson(json, 'type');
+    final transType = stringFromJson(json, 'transaction_type');
+    type = transType.isNotEmpty ? transType : stringFromJson(json, 'type');
     status = stringFromJson(json, 'status');
     amount = stringFromJson(json, 'amount');
     formattedAmount = stringFromJson(json, 'formatted_amount');
-    description = stringFromJson(json, 'description');
+    final statusTrans = stringFromJson(json, 'status_trans');
+    description = statusTrans.isNotEmpty ? statusTrans : stringFromJson(json, 'description');
     isCredit = boolFromJson(json, 'is_credit');
     isUp = boolFromJson(json, 'is_up');
     meta = (json?['meta'] as Map<String, dynamic>?) ?? {};
-    createdAt = dateFromJson(json, 'created_at');
+    final dateStr = stringFromJson(json, 'date');
+    if (dateStr.isNotEmpty) {
+      createdAt = dateFromJson(json, 'date');
+      createdAtFormat = dateStr;
+    } else {
+      createdAt = dateFromJson(json, 'created_at');
+      createdAtFormat = stringFromJson(json, 'created_at_format');
+    }
     updatedAt = dateFromJson(json, 'updated_at');
-    createdAtFormat = stringFromJson(json, 'created_at_format');
   }
 
   @override

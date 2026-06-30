@@ -37,7 +37,9 @@ class AddressItemWidget extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     Text(
-                      address.type.isNotEmpty ? address.type : 'العنوان',
+                      address.type == 'home'
+                          ? 'المنزل'
+                          : (address.type == 'work' ? 'العمل' : (address.type.isNotEmpty ? address.type : 'العنوان')),
                       style: context.boldText.copyWith(
                         fontSize: 16.sp,
                         color: context.primaryColor,
@@ -63,22 +65,24 @@ class AddressItemWidget extends StatelessWidget {
                             ),
                           ),
                         ),
-                        SizedBox(width: 8.w),
-                        GestureDetector(
-                          onTap: onDelete,
-                          child: Container(
-                            padding: EdgeInsets.all(6.r),
-                            decoration: BoxDecoration(
-                              color: Colors.red.withValues(alpha: 0.1),
-                              borderRadius: BorderRadius.circular(8.r),
-                            ),
-                            child: CustomImage(
-                              Assets.icons.trash,
-                              width: 16,
-                              height: 16,
+                        if (!address.isDefault) ...[
+                          SizedBox(width: 8.w),
+                          GestureDetector(
+                            onTap: onDelete,
+                            child: Container(
+                              padding: EdgeInsets.all(6.r),
+                              decoration: BoxDecoration(
+                                color: Colors.red.withValues(alpha: 0.1),
+                                borderRadius: BorderRadius.circular(8.r),
+                              ),
+                              child: CustomImage(
+                                Assets.icons.trash,
+                                width: 16,
+                                height: 16,
+                              ),
                             ),
                           ),
-                        ),
+                        ],
                       ],
                     ),
                   ],

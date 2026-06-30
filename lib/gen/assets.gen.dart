@@ -14,6 +14,9 @@ import 'package:flutter/widgets.dart';
 class $AssetsIconsGen {
   const $AssetsIconsGen();
 
+  /// File path: assets/icons/Calendar.svg
+  String get calendar => 'assets/icons/Calendar.svg';
+
   /// File path: assets/icons/Calling.svg
   String get calling => 'assets/icons/Calling.svg';
 
@@ -50,6 +53,9 @@ class $AssetsIconsGen {
 
   /// File path: assets/icons/city.svg
   String get city => 'assets/icons/city.svg';
+
+  /// File path: assets/icons/clock.svg
+  String get clock => 'assets/icons/clock.svg';
 
   /// File path: assets/icons/duotone_user.svg
   String get duotoneUser => 'assets/icons/duotone_user.svg';
@@ -89,6 +95,12 @@ class $AssetsIconsGen {
 
   /// File path: assets/icons/location.svg
   String get location => 'assets/icons/location.svg';
+
+  /// File path: assets/icons/master_card.svg
+  String get masterCard => 'assets/icons/master_card.svg';
+
+  /// File path: assets/icons/money.svg
+  String get money => 'assets/icons/money.svg';
 
   /// File path: assets/icons/note.svg
   String get note => 'assets/icons/note.svg';
@@ -147,11 +159,15 @@ class $AssetsIconsGen {
   /// File path: assets/icons/vegetable.svg
   String get vegetable => 'assets/icons/vegetable.svg';
 
+  /// File path: assets/icons/visa.svg
+  String get visa => 'assets/icons/visa.svg';
+
   /// File path: assets/icons/wallet.svg
   String get wallet => 'assets/icons/wallet.svg';
 
   /// List of all assets
   List<dynamic> get values => [
+    calendar,
     calling,
     groups1,
     iconIonicIosHeartEmpty,
@@ -164,6 +180,7 @@ class $AssetsIconsGen {
     call,
     camera,
     city,
+    clock,
     duotoneUser,
     edit,
     edit2,
@@ -177,6 +194,8 @@ class $AssetsIconsGen {
     ksaFlag,
     language,
     location,
+    masterCard,
+    money,
     note,
     note2,
     notification,
@@ -196,6 +215,7 @@ class $AssetsIconsGen {
     user,
     userNavBar,
     vegetable,
+    visa,
     wallet,
   ];
 }

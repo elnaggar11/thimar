@@ -109,35 +109,42 @@ class _ProductItemState extends State<ProductItem> {
                       Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
-                          Row(
-                            crossAxisAlignment: CrossAxisAlignment.end,
-                            children: [
-                              Text(
-                                '${widget.product.priceAfterDiscount}',
-                                style: context.boldText.copyWith(
-                                  fontSize: 14.sp,
-                                  color: context.primaryColor,
-                                ),
+                          Expanded(
+                            child: FittedBox(
+                              fit: BoxFit.scaleDown,
+                              alignment: AlignmentDirectional.centerStart,
+                              child: Row(
+                                crossAxisAlignment: CrossAxisAlignment.end,
+                                children: [
+                                  Text(
+                                    '${widget.product.priceAfterDiscount}',
+                                    style: context.boldText.copyWith(
+                                      fontSize: 14.sp,
+                                      color: context.primaryColor,
+                                    ),
+                                  ),
+                                  SizedBox(width: 2.w),
+                                  Text(
+                                    LocaleKeys.sar.tr(),
+                                    style: context.boldText.copyWith(
+                                      fontSize: 12.sp,
+                                      color: context.primaryColor,
+                                    ),
+                                  ),
+                                  SizedBox(width: 4.w),
+                                  Text(
+                                    '${widget.product.price} ${LocaleKeys.sar.tr()}',
+                                    style: context.regularText.copyWith(
+                                      fontSize: 10.sp,
+                                      color: context.hintColor,
+                                      decoration: TextDecoration.lineThrough,
+                                    ),
+                                  ),
+                                ],
                               ),
-                              SizedBox(width: 2.w),
-                              Text(
-                                LocaleKeys.sar.tr(),
-                                style: context.boldText.copyWith(
-                                  fontSize: 12.sp,
-                                  color: context.primaryColor,
-                                ),
-                              ),
-                              SizedBox(width: 4.w),
-                              Text(
-                                '${widget.product.price} ${LocaleKeys.sar.tr()}',
-                                style: context.regularText.copyWith(
-                                  fontSize: 10.sp,
-                                  color: context.hintColor,
-                                  decoration: TextDecoration.lineThrough,
-                                ),
-                              ),
-                            ],
+                            ),
                           ),
+                          SizedBox(width: 4.w),
                           Container(
                             padding: EdgeInsets.all(4.r),
                             decoration: BoxDecoration(

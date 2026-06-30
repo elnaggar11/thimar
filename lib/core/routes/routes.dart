@@ -18,6 +18,7 @@ class NamedRoutes {
   static const updatePassword = "/updatePassword";
   static const updatePhone = "/updatePhone";
   static const orderDetails = "/orderDetails";
+  static const rateProducts = "/rateProducts";
   static const orders = "/orders";
   static const newOrders = "/newOrders";
   static const ratings = "/ratings";
@@ -51,4 +52,5 @@ class NamedRoutes {
   static const wallet = "/wallet";
   static const chargeWallet = "/chargeWallet";
   static const cards = "/cards";
+  static const checkout = "/checkout";
 }

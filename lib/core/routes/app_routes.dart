@@ -23,6 +23,10 @@ import 'package:thimar/feature/wallet/view.dart';
 import 'package:thimar/feature/wallet/charge_wallet_view.dart';
 import 'package:thimar/feature/notifications/view.dart';
 import 'package:thimar/feature/cards/view.dart';
+import 'package:thimar/feature/checkout/view.dart';
+import 'package:thimar/feature/orders/order_details_view.dart';
+import 'package:thimar/feature/orders/view.dart';
+import 'package:thimar/feature/rate_products/view.dart';
 
 import 'routes.dart';
 
@@ -38,7 +42,6 @@ class AppRoutes {
     NamedRoutes.verify: (c) => const VerifyView(),
     NamedRoutes.layout: (c) => const LayoutView(),
     NamedRoutes.resetPassword: (c) => const ResetPasswordView(),
-
     NamedRoutes.productDetails: (c) =>
         ProductDetailsView(product: c.arg['product']),
     NamedRoutes.faqs: (c) => const FaqsView(),
@@ -51,10 +54,16 @@ class AppRoutes {
     NamedRoutes.contactUs: (c) => const ContactUsView(),
     NamedRoutes.cart: (c) => const CartView(),
     NamedRoutes.addresses: (c) => const AddressesView(),
-    NamedRoutes.addAddress: (c) => AddAddressView(address: c.arg?['address']),
+    NamedRoutes.addAddress: (c) => AddAddressView(address: c.arg['address']),
     NamedRoutes.wallet: (c) => const WalletView(),
     NamedRoutes.chargeWallet: (c) => const ChargeWalletView(),
     NamedRoutes.notification: (c) => const NotificationsView(),
     NamedRoutes.cards: (c) => const CardsView(),
+    NamedRoutes.checkout: (c) => const CheckoutView(),
+    NamedRoutes.orderDetails: (c) =>
+        OrderDetailsView(orderId: c.arg['orderId']),
+    NamedRoutes.rateProducts: (c) =>
+        RateProductsView(products: c.arg['products']),
+    NamedRoutes.orders: (c) => const OrdersView(),
   };
 }

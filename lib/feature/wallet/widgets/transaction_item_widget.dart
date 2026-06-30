@@ -29,69 +29,113 @@ class TransactionItemWidget extends StatelessWidget {
           ),
         ],
       ),
-      child: Column(
+      child: Row(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              Text(
-                transaction.createdAtFormat,
-                style: context.regularText.copyWith(
-                  fontSize: 12.sp,
-                  color: context.hintColor,
-                ),
+          // Icon on the far right (first child in RTL)
+          Container(
+            padding: EdgeInsets.all(4.r),
+            decoration: BoxDecoration(
+              color: Colors.white,
+              shape: BoxShape.circle,
+              border: Border.all(
+                color: isRecharge ? context.primaryColor : Colors.red,
+                width: 1.5,
               ),
-              Row(
-                children: [
+            ),
+            child: Icon(
+              isRecharge ? Icons.call_received_rounded : Icons.arrow_outward_rounded,
+              color: isRecharge ? context.primaryColor : Colors.red,
+              size: 16.sp,
+            ),
+          ),
+          SizedBox(width: 8.w),
+          // Content column
+          Expanded(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Text(
+                      isRecharge ? LocaleKeys.chargeWalletActivity.tr() : LocaleKeys.paidForThisOrder.tr(),
+                      style: context.boldText.copyWith(
+                        fontSize: 14.sp,
+                        color: context.primaryColor,
+                      ),
+                    ),
+                    Text(
+                      transaction.createdAtFormat,
+                      style: context.regularText.copyWith(
+                        fontSize: 12.sp,
+                        color: context.hintColor,
+                      ),
+                    ),
+                  ],
+                ),
+                SizedBox(height: 12.h),
+                if (isRecharge)
                   Text(
-                    isRecharge ? LocaleKeys.chargeWalletActivity.tr() : LocaleKeys.paidForThisOrder.tr(),
-                    style: context.semiboldText.copyWith(
-                      fontSize: 14.sp,
+                    '${transaction.amount} ر.س',
+                    style: context.boldText.copyWith(
+                      fontSize: 20.sp,
                       color: context.primaryColor,
                     ),
                   ),
-                  SizedBox(width: 8.w),
-                  Icon(
-                    isRecharge ? Icons.arrow_outward_rounded : Icons.call_received_rounded,
-                    color: isRecharge ? Colors.green : Colors.red,
-                    size: 20.sp,
+                if (!isRecharge)
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    crossAxisAlignment: CrossAxisAlignment.end,
+                    children: [
+                      Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text(
+                            '${LocaleKeys.orderNum.tr()} ${transaction.id}', // or transaction.meta['order_id']
+                            style: context.boldText.copyWith(
+                              fontSize: 12.sp,
+                              color: context.primaryColor,
+                            ),
+                          ),
+                          SizedBox(height: 8.h),
+                          Row(
+                            children: [
+                              Container(
+                                padding: EdgeInsets.symmetric(horizontal: 8.w, vertical: 4.h),
+                                decoration: BoxDecoration(
+                                  color: context.primaryColor.withValues(alpha: 0.1),
+                                  borderRadius: BorderRadius.circular(6.r),
+                                ),
+                                child: Text(
+                                  '+2',
+                                  style: context.boldText.copyWith(
+                                    color: context.primaryColor,
+                                    fontSize: 10.sp,
+                                  ),
+                                ),
+                              ),
+                              SizedBox(width: 4.w),
+                              _buildProductImage(),
+                              SizedBox(width: 4.w),
+                              _buildProductImage(),
+                              SizedBox(width: 4.w),
+                              _buildProductImage(),
+                            ],
+                          ),
+                        ],
+                      ),
+                      Text(
+                        '${transaction.amount} ر.س',
+                        style: context.boldText.copyWith(
+                          fontSize: 18.sp,
+                          color: context.primaryColor,
+                        ),
+                      ),
+                    ],
                   ),
-                ],
-              ),
-            ],
-          ),
-          SizedBox(height: 8.h),
-          if (!isRecharge) ...[
-            Text(
-              '${LocaleKeys.orderNum.tr()}${transaction.id}', // or transaction.meta['order_id'] if available
-              style: context.mediumText.copyWith(
-                fontSize: 12.sp,
-                color: context.hintColor,
-              ),
+              ],
             ),
-            SizedBox(height: 8.h),
-          ],
-          Row(
-            mainAxisAlignment: isRecharge ? MainAxisAlignment.end : MainAxisAlignment.spaceBetween,
-            children: [
-              if (!isRecharge)
-                Row(
-                  // Dummy products images based on design
-                  children: [
-                    _buildProductImage(),
-                    _buildProductImage(),
-                    _buildProductImage(),
-                  ],
-                ),
-              Text(
-                '${transaction.amount} ر.س',
-                style: context.boldText.copyWith(
-                  fontSize: 18.sp,
-                  color: context.primaryColor,
-                ),
-              ),
-            ],
           ),
         ],
       ),
@@ -102,12 +146,17 @@ class TransactionItemWidget extends StatelessWidget {
     return Container(
       width: 24.w,
       height: 24.h,
-      margin: EdgeInsets.only(right: 4.w),
       decoration: BoxDecoration(
         color: const Color(0xFFF5F5F5),
-        borderRadius: BorderRadius.circular(4.r),
+        borderRadius: BorderRadius.circular(6.r),
       ),
-      child: Icon(Icons.image, size: 12.sp, color: Colors.grey),
+      child: ClipRRect(
+        borderRadius: BorderRadius.circular(6.r),
+        child: Image.asset(
+          'assets/images/Rectangle 3499.png',
+          fit: BoxFit.cover,
+        ),
+      ),
     );
   }
 }
